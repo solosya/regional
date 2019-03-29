@@ -11,36 +11,55 @@
 
 
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
-    <figure class="{{params.figureClass}}">
+    <figure class="c-cards-view--media {{params.figureClass}}">
         <picture>
             <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.articleImgMedium}}">
             <source media="(max-width: 500px)" srcset="{{params.articleImgSmall}}">
 
             {% if params.lazyload == false %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-fluid" src="{{params.articleImg}}">
             {% else %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-fluid lazyload" src="{{params.placeholder}}" data-original="{{params.articleImg}}">
             {% endif %}
+            <div class="video-icon"></div>
+
         </picture>
     </figure>
+    <div class="social-icon"></div>
+
 {% endif %}
 
 
-<div class="content">
-    <div class="category {{params.site}}">{{label}}</div>
+<div class="c-cards-view__container">
+    <div class="c-cards-view__info">
+
+        <div class="c-cards-view__info--category">{{label}}</div>
+        
+        <h2 class="c-cards-view__info--heading js-card-heading {{params.figureClass}}">{{ params.articleTitle }}</h2>
+        
+        <p class="c-cards-view__info--description js-card-description">{{ quotes.smarten(article.excerpt | raw) }}</p>
     
-    <h2 class="j-truncate {{params.figureClass}}">{{ params.articleTitle }}</h2>
+        <div class="c-cards-view__additioanl-info">
+            <div class="c-cards-view__additioanl-info--price">$950,000</div>
+            <div class="c-cards-view__additioanl-info--features">
+                <div class="c-cards-view__additioanl-info--features-list">
+                    <span class="icon fa fa-bed"></span>
+                    <span class="text">3</span>
+                </div>
+                <div class="c-cards-view__additioanl-info--features-list">
+                    <span class="icon fa fa-bath"></span>
+                    <span class="text">7</span>
+                </div>
+                <div class="c-cards-view__additioanl-info--features-list">
+                    <span class="icon fa fa-car"></span>
+                    <span class="text">2</span>
+                </div>
+            </div>
+        </div>
     
-    <p class="j-truncate excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
-   
-    <div class="j-truncate author">
-        {% if params.profileImg != false %}
-            <img src="{{params.profileImg}}" class="img-circle">
-        {% endif %}
-        <p class="{{params.site}}">{{ article.createdBy['displayName'] }}</p>
-        <time datetime="{{publishDate}}">{{params.publishDate}}</time>
+        <div class="c-cards-view__author">
+            <div class="c-cards-view__author--name">{{ article.createdBy['displayName'] }}</div>
+            <div class="c-cards-view__author--time">{{params.publishDate}}</div>
+        </div>
     </div>
-
-    <time datetime="{{publishDate}}">{{params.publishDate}}</time>
-
 </div>
