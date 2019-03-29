@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
 
-{% cache 'indexCache_1' 300 %}
+{# {% cache 'indexCache_1' 300 %} #}
 
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
@@ -70,8 +70,9 @@
 
             {% set feed = _Blog.getBlogFeed({
                 'offset' : 0, 
-                'blogid' : blog.guid})
-                'limit'  : blogFeeds[key]['limit'], 
+                'blogid' : blog.guid,
+                'limit'  : blogFeeds[key]['limit']
+                })
             %}
 
             {% set blogFeeds = blogFeeds | merge({
@@ -87,6 +88,7 @@
 {% endfor %}
 
 
+<div class="clearfix"></div>
 
 
 <main id="main" class="site-main" role="main" data-layout="{{layoutTitle}}">
@@ -108,8 +110,8 @@
                 'networkData' : networkData,
                 'blogData'    : blogData
             } %}
-        
-            {{this.render('render.twig', params) | raw}} 
+
+            {# {{this.render('render.twig', params) | raw}}  #}
 
             {% if loop.index in bannerSpots %}
                 <div class="ad-container">
@@ -132,4 +134,4 @@
 
 
 
-{% endcache %}
+{# {% endcache %} #}

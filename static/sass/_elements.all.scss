@@ -5,15 +5,22 @@ html {
     font-size:100%;
 }
 
-h1, h2 {
-    margin:0;
-    font-weight:300;
+
+html,
+body {
+    @include size($viewportSize);
+    min-height: 100% !important;
 }
-p {
-    margin:0;
-}
-li {list-style-type: none;}
-body{
+
+body {
+    height: auto;
+    background: $white none repeat scroll 0 0;
+    color: $greyish;
+    font-family: $primaryFont !important;
+    font-weight: $weightRegular;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
     overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling:touch;
@@ -24,7 +31,28 @@ body{
     @media screen and (max-width: $sm-break){
         overflow-x: hidden;
     }
+
+
+
+
 }
+
+ul li,
+ol li {
+    font-weight: $weightRegular;
+}
+
+
+
+h1, h2 {
+    margin:0;
+    font-weight:300;
+}
+p {
+    margin:0;
+}
+li {list-style-type: none;}
+
 iframe {
     border:none;
 }
@@ -41,4 +69,134 @@ fieldset {
         margin-bottom: 5px;
         font-weight: bold;
     }
+}
+
+
+strong,
+.strong {
+    font-weight: 700;
+}
+
+em,
+.em {
+    font-style: italic;
+}
+
+
+// Text Decoration
+// ================================
+.txt-dec-none {
+    text-decoration: none;
+}
+
+// Defaults
+// ================================
+html,
+body {
+    font-family: $primaryFont;
+    font-size: $baseFontSize;
+    color: $greyish;
+}
+
+// Headings
+// ================================
+h1,
+h2,
+h3 {
+    font-family: $primaryFont;
+}
+
+h4,
+h5,
+h6 {
+    font-family: $primaryFont;
+}
+
+.form-section h2 {
+    font-family: $primaryFont;
+}
+
+.header-heading {
+    margin-bottom: 15px;
+}
+
+
+// Links
+// ================================
+a,
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
+
+/* Typography
+------------------------------------*/
+h1 {
+    line-height: 1.6;
+}
+
+h2 {
+    line-height: 1.5;
+}
+
+h3 {
+    line-height: 1.4;
+}
+
+h4 {
+    line-height: 1.3;
+}
+
+h5 {
+    line-height: 1.2;
+}
+
+h6 {
+    line-height: 1.2;
+}
+
+p {
+    @include font-size(16);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+ul,
+ol {
+    position: relative;
+
+    li {
+        list-style: none;
+
+        a {
+            &:hover {
+                text-decoration: none;
+                @include transition(all 0.3s ease-in);
+            }
+        }
+    }
+}
+
+ol {
+    li {
+        list-style-position: outside;
+    }
+}
+
+.marker-list li {
+    list-style: square;
+    list-style-position: inside;
+}
+
+iframe {
+    border: none;
+}
+
+q {
+    @include font-size(18);
+    font-style: italic;
+    color: $black;
 }

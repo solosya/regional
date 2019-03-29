@@ -1,0 +1,108 @@
+/* Begin header style */
+
+.responsive-standalone {
+    top: 0;
+    width: 280px;
+    height: $viewportSize;
+    /* display: none;
+    border-right: 1px solid $border; */
+    left: auto;
+    right: 0;
+    text-align: left;
+    z-index: 99999999;
+    visibility: hidden;
+    padding: 0px 0px 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    @include transition(all 0.3s ease);
+    -webkit-transform: translate3d(100%, 0, 0);
+    -moz-transition: translate3d(100%, 0, 0);
+    -ms-transition: translate3d(100%, 0, 0);
+    -o-transition: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    position: fixed !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba($black, 0.9) none repeat scroll 0 0;
+
+    &.navigation-active {
+        visibility: visible;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transition: translate3d(0, 0, 0);
+        -ms-transition: translate3d(0, 0, 0);
+        -o-transition: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    &-close {
+        top: 0px;
+        right: 0;
+        z-index: 100;
+        position: absolute;
+        @include font-size(20);
+        padding: .5em 0.85em;
+        line-height: 1.5em;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-transform: translate3d(100%, 0, 0);
+        -moz-transition: translate3d(100%, 0, 0);
+        -ms-transition: translate3d(100%, 0, 0);
+        -o-transition: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        visibility: hidden;
+        cursor: pointer;
+
+        &.open {
+            visibility: visible;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transition: translate3d(0, 0, 0);
+            -ms-transition: translate3d(0, 0, 0);
+            -o-transition: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .close-text {
+            width: 3em;
+            float: left;
+            height: 1.5em;
+            color: $white;
+            display: block;
+            overflow: hidden;
+        }
+
+        .fa {
+            color: $white;
+        }
+    }
+
+    &-overlay {
+        display: none;
+        background: rgba($black, 0.5);
+        position: fixed;
+        @include size(#{$viewportSize});
+        top: 0;
+        z-index: 10;
+        left: 0;
+    }
+
+    .standalone-menu {
+        padding: 40px 25px 0 0;
+
+        li {
+            a {
+                display: block;
+                @include font-size(13);
+                padding: 10px 0;
+                letter-spacing: 1px;
+                text-align: right;
+                width: $viewportSize;
+                color: $white;
+            }
+        }
+    }
+}
+
+/* End header style */

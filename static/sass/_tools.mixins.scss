@@ -4,34 +4,10 @@
 			color: #000;
 		}
 		
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	        	color: #f03746;
-	        }
-	    }
-		&.country, &.campaspe {
-			#{$class} {
-	        	color: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	    	#{$class} {
-	        	color: #118ce0;
-	        }
-	    }
 
 	} @else {
 
 		color: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        color: #f03746;
-	    }
-		&.country, &.campaspe {
-	        color: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        color: #118ce0;
-	    }
 
 	}
 
@@ -43,35 +19,10 @@
 			color: #000;
 		}
 		
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	        	color: #f03746;
-	        }
-	    }
-		&.country, &.campaspe {
-			#{$class} {
-	        	color: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	    	#{$class} {
-	        	color: #118ce0;
-	        }
-	    }
 
 	} @else {
 
 		color: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        color: #f03746;
-	    }
-		&.country, &.campaspe {
-	        color: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        color: #118ce0;
-	    }
-
 	}
 
 }
@@ -82,32 +33,8 @@
 			background-color: #000;
 		}
 		
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	        	background-color: #f03746;
-	        }
-	    }
-		&.country, &.campaspe {
-			#{$class} {
-	        	background-color: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	    	#{$class} {
-	        	background-color: #118ce0;
-	        }
-	    }
 	} @else {
 		background-color: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        background-color: #f03746;
-	    }
-		&.country, &.campaspe {
-	         background-color: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        background-color: #118ce0;
-	    }
 	}
 
 }
@@ -117,33 +44,9 @@
 		#{$class} {
 			fill: #000;
 		}
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-		        fill: #f03746;
-		    }
-	    }
-		&.country, &.campaspe {
-	         #{$class} {
-		         fill: #8bc833;
-		    }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        #{$class} {
-		        fill: #118ce0;
-		    }
-	    }
 	} @else {
 
 	    fill: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        fill: #f03746;
-	    }
-		&.country, &.campaspe {
-	         fill: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        fill: #118ce0;
-	    }
 	}
 
 }
@@ -154,33 +57,9 @@
 	        stroke: #000;
 	        fill: #fff;
 	    }
-	    &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	            stroke: #f03746;
-	        }
-	    }
-	    &.country, &.campaspe {
-	        #{$class} {
-	            stroke: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	       #{$class} {
-	            stroke: #118ce0;
-	        }
-	    }
 	} @else {
 		stroke: #000;
         fill: #fff;	    
-	    &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {	        
-            stroke: #f03746;	        
-	    }
-	    &.country, &.campaspe {	        
-            stroke: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {	      
-            stroke: #118ce0;	       
-	    }
 	}
 }
 
@@ -340,18 +219,496 @@
 
 
 
+@mixin clearfix() {
+
+	&:before,
+	&:after {
+			content: "";
+			display: table;
+	}
+
+	&:after {
+			clear: both;
+	}
+}
 
 
-// // Default mixins for application
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	-ms-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie);
+}
+
+/* Transition */
+@mixin transition($transition) {
+	transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-webkit-transition: $transition;
+	-ms-transition: $transition;
+}
+
+/* Sizes */
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin alpha-attribute($attribute, $color, $background) {
+	$percent: alpha($color) * 100%;
+	$opaque: opacify($color, 1);
+	$solid-color: mix($opaque, $background, $percent);
+	#{$attribute}: $solid-color;
+	#{$attribute}: $color;
+}
+
+@mixin alpha-background-color($color, $background) {
+	$percent: alpha($color) * 100%;
+	$opaque: opacify($color, 1);
+	$solid-color: mix($opaque, $background, $percent);
+	background-color: $solid-color;
+	background-color: $color;
+}
+
+/* Gradient Mixin */
+@mixin linear-gradient($direction, $color-stops...) {
+	background: nth(nth($color-stops, 1), 1);
+	/* Old browsers */
+	background: -moz-linear-gradient(legacy-direction($direction), $color-stops);
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+	/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient($direction, $color-stops);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#{$direction}", EndColorStr="#{$color-stops}");
+	/* IE6-9 */
+}
+
+/* Image Cover Size */
+@mixin background-size($background-size) {
+	-webkit-background-size: $background-size;
+	/* Chrome, Safari, Opera */
+	-moz-background-size: $background-size;
+	/* Mozilla Firefox */
+	-ms-background-size: $background-size;
+	/* IE 9 */
+	-o-background-size: $background-size;
+	background-size: $background-size;
+}
+
+/* Image Object Fit */
+@mixin object-fit($object-fit) {
+-webkit-object-fit:$object-fit; /* Chrome, Safari, Opera */
+	 -moz-object-fit:$object-fit; /* Mozilla Firefox */
+		-ms-object-fit:$object-fit; /* IE 9 */
+	 -o-object-fit:$object-fit;
+			object-fit:$object-fit;
+}
+
+/* Transform */
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+	/* Chrome, Safari, Opera */
+	-moz-transform: $transforms;
+	/* Mozilla Firefox */
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	/* IE 9 */
+	transform: $transforms;
+}
+
+/* rotate */
+@mixin rotate ($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+/* scale */
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}
+
+/* translate */
+@mixin translate ($x, $y) {
+	@include transform(translate($x, $y));
+}
+
+@mixin translateY ($y) {
+	@include transform(translateY($y));
+}
+
+/* skew */
+@mixin skew ($x, $y) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+/* transform origin */
+@mixin transform-origin ($origin) {
+	-webkit-transform-origin: $origin;
+	/* Chrome, Safari, Opera */
+	-moz-transform-origin: $origin;
+	/* Mozilla Firefox */
+	-o-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	/* IE 9 */
+	transform-origin: $origin;
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+			@content;
+	}
+
+	&:-moz-placeholder {
+			/* Firefox 18- */
+			@content;
+	}
+
+	&::-moz-placeholder {
+			/* Firefox 19+ */
+			@content;
+	}
+
+	&:-ms-input-placeholder {
+			@content;
+	}
+}
 
 
-// // Default image settings when used as a css background
-// @mixin image_background {
-// 	background-color:$gray-4-color;
-// 	background-repeat:no-repeat;
-// 	background-size:cover;
-// 	background-position:0% 50%;
-// }
+@mixin flexbox {
+display:-webkit-box;
+display:-webkit-flex;
+display:-moz-flex;
+display:-ms-flexbox;
+display:flex;
+}
+%flexbox { @include flexbox; }
+
+
+@mixin inline-flex {
+display:-webkit-inline-box;
+display:-webkit-inline-flex;
+display:-moz-inline-flex;
+display:-ms-inline-flexbox;
+display:inline-flex;
+}
+%inline-flex { @include inline-flex; }
+
+
+@mixin flex-direction($direction, $orient) {
+	-webkit-flex-direction: $direction;
+	-moz-flex-direction: $direction;
+	-ms-flex-direction: $direction;	
+	flex-direction: $direction;
+	-webkit-box-orient: $orient;
+	-moz-box-orient: $orient;
+	-ms-box-orient: $orient;
+	box-orient: $orient;
+}
+
+
+@mixin flex-wrap($value:nowrap) {
+-webkit-flex-wrap:$value;
+-moz-flex-wrap:$value;
+@if $value == nowrap {
+	-ms-flex-wrap:none;
+} @else { 
+	-ms-flex-wrap:$value; 
+}
+flex-wrap:$value;
+}
+
+
+@mixin flex-flow($values:(row nowrap)) {
+-webkit-flex-flow:$values;
+-moz-flex-flow:$values;
+-ms-flex-flow:$values;
+flex-flow:$values;
+}
+
+
+@mixin order($int:0) {
+-webkit-box-ordinal-group:$int + 1;
+-webkit-order:$int;
+-moz-order:$int;
+-ms-flex-order:$int;
+order:$int;
+}
+
+
+@mixin flex-grow($int:0) {
+-webkit-box-flex:$int;
+-webkit-flex-grow:$int;
+-moz-flex-grow:$int;
+-ms-flex-positive:$int;
+flex-grow:$int;
+}
+
+
+@mixin flex-shrink($int:1) {
+-webkit-flex-shrink:$int;
+-moz-flex-shrink:$int;
+-ms-flex-negative:$int;
+flex-shrink:$int;
+}
+
+
+@mixin flex-basis($value:auto) {
+-webkit-flex-basis:$value;
+-moz-flex-basis:$value;
+-ms-flex-preferred-size:$value;
+flex-basis:$value;
+}
+
+
+@mixin flex($fg:1, $fs:null, $fb:null) {
+$fg-boxflex:$fg;
+@if type-of($fg) == 'list' {
+	$fg-boxflex:nth($fg, 1);
+}
+
+-webkit-box-flex:$fg-boxflex;
+-webkit-flex:$fg $fs $fb;
+-moz-box-flex:$fg-boxflex;
+-moz-flex:$fg $fs $fb;
+-ms-flex:$fg $fs $fb;
+flex:$fg $fs $fb;
+}
+
+
+@mixin justify-content($value:flex-start) {
+@if $value == flex-start {
+	-webkit-box-pack:start;
+	-ms-flex-pack:start;
+} @else if $value == flex-end {
+	-webkit-box-pack:end;
+	-ms-flex-pack:end;
+} @else if $value == space-between {
+	-webkit-box-pack:justify;
+	-ms-flex-pack:justify;
+} @else if $value == space-around {
+	-ms-flex-pack:distribute;		
+} @else {
+	-webkit-box-pack:$value;
+	-ms-flex-pack:$value;
+}
+-webkit-justify-content:$value;
+-moz-justify-content:$value;
+justify-content:$value;
+}
+/* Shorter version: */
+@mixin flex-just($args...) { @include justify-content($args...); }
+
+
+@mixin align-items($value:stretch) {
+@if $value == flex-start {
+	-webkit-box-align:start;
+	-ms-flex-align:start;
+} @else if $value == flex-end {
+	-webkit-box-align:end;
+	-ms-flex-align:end;
+} @else {
+	-webkit-box-align:$value;
+	-ms-flex-align:$value;
+}
+-webkit-align-items:$value;
+-moz-align-items:$value;
+align-items:$value;
+}
+
+
+@mixin align-self($value:auto) {
+-webkit-align-self:$value;
+-moz-align-self:$value;
+@if $value == flex-start {
+	-ms-flex-item-align:start;
+} @else if $value == flex-end {
+	-ms-flex-item-align:end;
+} @else {
+	-ms-flex-item-align:$value;
+}
+align-self:$value;
+}
+
+
+@mixin align-content($value:stretch) {
+-webkit-align-content:$value;
+-moz-align-content:$value;
+@if $value == flex-start {
+	-ms-flex-line-pack:start;
+} @else if $value == flex-end {
+	-ms-flex-line-pack:end;
+} @else {
+	-ms-flex-line-pack:$value;
+}
+align-content:$value;
+}
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+			@content;
+	}
+
+	@-moz-keyframes #{$animation-name} {
+			@content;
+	}
+
+	@-ms-keyframes #{$animation-name} {
+			@content;
+	}
+
+	@-o-keyframes #{$animation-name} {
+			@content;
+	}
+
+	@keyframes #{$animation-name} {
+			@content;
+	}
+}
+
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	-ms-animation: #{$str};
+	-o-animation: #{$str};
+	animation: #{$str};
+}
+
+@mixin image_background {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+
+@mixin font-size($sizeValue: 16, $line: $sizeValue * 1.2) {
+	font-size: ($sizeValue / 16) + rem;
+	line-height: ($line / 16) + rem;
+}
+
+@mixin calc($property, $expression) {
+	#{$property}: -moz-calc(#{$expression});
+	#{$property}: -webkit-calc(#{$expression});
+	#{$property}: calc(#{$expression});
+}
+
+$breakpoints: ('xs': (min-width: 576px),
+'sm': (min-width: 768px),
+'md': (min-width: 992px),
+'cmd': (min-width: 1171px),
+'lg': (min-width: 1200px));
+
+@mixin respond-to($names: ()) {
+	@each $name in $names {
+			@if map-has-key($breakpoints, $name) {
+					@media #{inspect(map-get($breakpoints, $name))} {
+							@content;
+					}
+			}
+
+			@else {
+					@warn "Unfortunately, no value could be retrieved for `#{$name}`.";
+			}
+	}
+}
+
+@mixin responsive($names: map-keys($breakpoints)) {
+
+	@each $name in $names {
+			@if map-has-key($breakpoints, $name) {
+					&-#{$name} {
+							@media #{inspect(map-get($breakpoints, $name))} {
+									@content;
+							}
+					}
+			}
+
+			@else {
+					@warn "Unfortunately, no value could be retrieved for `#{$name}`.";
+			}
+	}
+}
+
+/* Padding */
+@mixin padding($padding) {
+	@if length($padding)==1 {
+			padding: $padding/16 + rem;
+	}
+
+	@if length($padding)==2 {
+			padding: nth($padding, 1)/16 + rem nth($padding, 2)/16 + rem;
+	}
+
+	@if length($padding)==3 {
+			padding: nth($padding, 1)/16 + rem nth($padding, 2)/16 + rem nth($padding, 3)/16 + rem;
+	}
+
+	@if length($padding)==4 {
+			padding: nth($padding, 1)/16 + rem nth($padding, 2)/16 + rem nth($padding, 3)/16 + rem nth($padding, 4)/16 + rem;
+	}
+}
+
+@mixin padding-top($padding-top) {
+	padding-top: $padding-top/16 + rem;
+}
+
+@mixin padding-right($padding-right) {
+	padding-right: $padding-right/16 + rem;
+}
+
+@mixin padding-bottom($padding-bottom) {
+	padding-bottom: $padding-bottom/16 + rem;
+}
+
+@mixin padding-left($padding-left) {
+	padding-left: $padding-left/16 + rem;
+}
+
+@mixin margin($margin) {
+	@if length($margin)==1 {
+			margin: $margin/16 + rem;
+	}
+
+	@if length($margin)==2 {
+			margin: nth($margin, 1)/16 + rem nth($margin, 2)/16 + rem;
+	}
+
+	@if length($margin)==3 {
+			margin: nth($margin, 1)/16 + rem nth($margin, 2)/16 + rem nth($margin, 3)/16 + rem;
+	}
+
+	@if length($margin)==4 {
+			margin: nth($margin, 1)/16 + rem nth($margin, 2)/16 + rem nth($margin, 3)/16 + rem nth($margin, 4)/16 + rem;
+	}
+}
+
+@mixin margin-top($margin-top) {
+	margin-top: $margin-top/16 + rem;
+}
+
+@mixin margin-bottom($margin-bottom) {
+	margin-bottom: $margin-bottom/16 + rem;
+}
+
+@mixin margin-left($margin-left) {
+	margin-left: $margin-left/16 + rem;
+}
+
+@mixin margin-right($margin-right) {
+	margin-right: $margin-right/16 + rem;
+}
+
 
 
 // // Default image for Dropzone
@@ -370,128 +727,13 @@
     background-size:428px auto;
 }
 
-// // Default image settings for Facebook
-// @mixin image_background_social_facebook {
-//   	background-image:url('../images/icons/social-facebook.svg');
-// }
-// @mixin image_background_social_facebook2 {
-//   	background-image:url('../images/icons/category-facebook.svg') !important;
-// }
 
-// // Default image settings for Twitter
-// @mixin image_background_social_twitter {
-//   	background-image:url('../images/icons/social-twitter.svg');
-// }
-// @mixin image_background_social_twitter2 {
-//   	background-image:url('../images/icons/category-twitter.svg');
-// }
-
-// // Default image settings for Googleplus
-// @mixin image_background_social_googleplus {
-//   	background-image:url('../images/icons/social-google-plus.svg');
-// }
-
-// // Default image settings for Instagram
-// @mixin image_background_social_instagram {
-//   	background-image:url('../images/icons/category-instagram.svg');
-// }
-// @mixin image_background_social_instagram2 {
-//   	background-image:url('../images/icons/category-instagram.svg');
-// }
-
-// // Default image settings for Youtube
-// @mixin image_background_social_youtube {
-//   	background-image:url('../images/icons/category-youtube.svg');
-// }
-
-// // Default image settings for Vimeo
-// @mixin image_background_social_vimeo {
-//   	background-image:url('../images/icons/category-vimeo.svg');
-// }
-
-// // Default image settings for Vimeo
-// @mixin image_background_social_news {
-//   	background-image: url(../images/icons/category-news.svg);
-// }
-
-
-// // Default image settings for Like
-// @mixin image_background_social_likes {
-//   	background-image:url('../images/icons/social-like.svg');
-// }
-
-// // Default image settings for email
-// @mixin image_background_social_email {
-//   	background-image:url('../images/icons/mail.svg');
-// }
-// // Default image settings for Comment
-// @mixin image_background_social_comment {
-//   	background-image:url('../images/icons/social-comment.svg');
-// }
-
-// // Default image settings for Comment
-// @mixin image_background_social_share {
-//   	background-image:url('../images/icons/social-share.svg');
-// }
-
-// // Base font
-// @mixin base_font {
-// 	color:$base-color;
-// 	font-family:$base-font-family;
-// 	letter-spacing:0.5px;
-// }
 
 
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;
 	border-radius: $radius;
 }
-
-// // Single side border-radius
-
-// @mixin border-top-radius($radius) {
-// 	-webkit-border-top-right-radius: $radius;
-// 	border-top-right-radius: $radius;
-// 	-webkit-border-top-left-radius: $radius;
-// 	border-top-left-radius: $radius;
-// }
-// @mixin border-right-radius($radius) {
-// 	-webkit-border-bottom-right-radius: $radius;
-// 	border-bottom-right-radius: $radius;
-// 	-webkit-border-top-right-radius: $radius;
-// 	border-top-right-radius: $radius;
-// }
-// @mixin border-bottom-radius($radius) {
-// 	-webkit-border-bottom-right-radius: $radius;
-// 	border-bottom-right-radius: $radius;
-// 	-webkit-border-bottom-left-radius: $radius;
-// 	border-bottom-left-radius: $radius;
-// }
-// @mixin border-left-radius($radius) {
-// 	-webkit-border-bottom-left-radius: $radius;
-// 	border-bottom-left-radius: $radius;
-// 	 -webkit-border-top-left-radius: $radius;
-// 	 border-top-left-radius: $radius;
-// }
-
-
-// @mixin box-shadow($shadow) {
-//   -webkit-box-shadow:$shadow;
-//      -moz-box-shadow:$shadow;
-//       -ms-box-shadow:$shadow;
-//           box-shadow:$shadow;
-// }
-
-
-// @mixin border($border) {
-//   	border:$border;
-// }
-
-// @mixin opacity($opacity) {
-// 	  opacity:$opacity;
-// 	  $opacity-ie:$opacity * 100;
-// 	  filter:alpha(opacity=$opacity-ie);
-// }
 
 
 // /* Padding */
@@ -525,53 +767,7 @@
   	width: $width;
   	height: $height;
 }
-// @mixin min-size($min-width, $min-height: $min-width) {
-//   	min-width: $min-width;
-//   	min-height: $min-height;
-// }
-// @mixin max-size($max-width, $max-height: $max-width) {
-//   	max-width: $max-width;
-//   	max-height: $max-height;
-// }
 
-// @mixin alpha-attribute($attribute, $color, $background) {
-// 	$percent: alpha($color) * 100%;
-// 	$opaque: opacify($color, 1);
-// 	$solid-color: mix($opaque, $background, $percent);
-// 	#{$attribute}: $solid-color;
-// 	#{$attribute}: $color;
-// }
-
-// @mixin alpha-background-color($color, $background) {
-// 	$percent: alpha($color) * 100%;
-// 	$opaque: opacify($color, 1);
-// 	$solid-color: mix($opaque, $background, $percent);
-// 	background-color: $solid-color;
-// 	background-color: $color;
-// }
-
-// /* Gradient Mixin */
-// /// Mixin printing a linear-gradient
-// /// as well as a plain color fallback
-// /// and the `-webkit-` prefixed declaration
-// /// @access public
-// /// @param {Keyword | Angle} $direction - Linear gradient direction
-// /// @param {Arglist} $color-stops - List of color-stops composing the gradient
-// @mixin linear-gradient($direction, $color-stops...) {
-// 	background:nth(nth($color-stops, 1), 1); /* Old browsers */
-// 	background:-moz-linear-gradient(legacy-direction($direction), $color-stops); /* FF3.6-15 */
-//   	background:-webkit-linear-gradient(legacy-direction($direction), $color-stops); /* Chrome10-25,Safari5.1-6 */
-//   	background:linear-gradient($direction, $color-stops); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-//   	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#{$direction}", EndColorStr="#{$color-stops}"); /* IE6-9 */
-// }
-
-// @mixin vertical-align($position: relative) {
-//   position: $position;
-//   top: 50%;
-//   -webkit-transform: translateY(-50%);
-//   -ms-transform: translateY(-50%);
-//   transform: translateY(-50%);
-// }
 
 // // Image Cover Size
 @mixin background-size($background-size) {
@@ -591,108 +787,6 @@
 	    -ms-transform:$transforms; /* IE 9 */
             transform:$transforms;
 }
-// // rotate
-// @mixin rotate ($deg) {
-//   @include transform(rotate(#{$deg}deg));
-// }
-
-// // scale
-// @mixin scale($scale) {
-// 	 @include transform(scale($scale));
-// }
-// // translate
-// @mixin translate ($x, $y) {
-//    @include transform(translate($x, $y));
-// }
-// // skew
-// @mixin skew ($x, $y) {
-//    @include transform(skew(#{$x}deg, #{$y}deg));
-// }
-// //transform origin
-// @mixin transform-origin ($origin) {
-// 	-webkit-transform-origin:$origin; /* Chrome, Safari, Opera */
-//        -moz-transform-origin:$origin; /* Mozilla Firefox */
-// 	     -o-transform-origin:$origin;
-// 	    -ms-transform-origin:$origin; /* IE 9 */
-//             transform-origin:$origin;
-// }
-
-
-// /* Touch Scroll */
-// @mixin overflow-scrolling($overflow-scrolling) {
-// 	-webkit-overflow-scrolling:$overflow-scrolling;
-// 	-moz-overflow-scrolling:$overflow-scrolling;
-// 	-ms-overflow-scrolling:$overflow-scrolling;
-// 	-o-overflow-scrolling:$overflow-scrolling;
-// 	overflow-scrolling:$overflow-scrolling;
-// }
-
-// /* Transition Delay */
-// @mixin transition-delay($transition-delay) {
-// 	transition-delay:0.3s;
-// 	-moz-transition-delay:0.3s;
-// 	-o-transition-delay:0.3s;
-// 	-webkit-transition-delay:0.3s;
-// 	-ms-transition-delay:0.3s;
-// }
-
-
-
-// // Flexbox Mixins
-// // http://philipwalton.github.io/solved-by-flexbox/
-// // https://github.com/philipwalton/solved-by-flexbox
-// //
-// // Copyright (c) 2013 Brian Franco
-// //
-// // Permission is hereby granted, free of charge, to any person obtaining a
-// // copy of this software and associated documentation files (the
-// // "Software"), to deal in the Software without restriction, including
-// // without limitation the rights to use, copy, modify, merge, publish,
-// // distribute, sublicense, and/or sell copies of the Software, and to
-// // permit persons to whom the Software is furnished to do so, subject to
-// // the following conditions:
-// // The above copyright notice and this permission notice shall be included
-// // in all copies or substantial portions of the Software.
-// // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// // OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// // IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-// // CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-// // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-// // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-// //
-// // This is a set of mixins for those who want to mess around with flexbox
-// // using the native support of current browsers. For full support table
-// // check:http://caniuse.com/flexbox
-// //
-// // Basically this will use:
-// //
-// // * Fallback, old syntax (IE10, mobile webkit browsers - no wrapping)
-// // * Final standards syntax (FF, Safari, Chrome, IE11, Opera)
-// //
-// // This was inspired by:
-// //
-// // * http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/
-// //
-// // With help from:
-// //
-// // * http://w3.org/tr/css3-flexbox/
-// // * http://the-echoplex.net/flexyboxes/
-// // * http://msdn.microsoft.com/en-us/library/ie/hh772069(v=vs.85).aspx
-// // * http://css-tricks.com/using-flexbox/
-// // * http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/
-// // * https://developer.mozilla.org/en-us/docs/web/guide/css/flexible_boxes
-
-// //----------------------------------------------------------------------
-
-// // Flexbox Containers
-// //
-// // The 'flex' value causes an element to generate a block-level flex
-// // container box.
-// //
-// // The 'inline-flex' value causes an element to generate a inline-level
-// // flex container box.
-// //
 // // display:flex | inline-flex
 // //
 // // http://w3.org/tr/css3-flexbox/#flex-containers
@@ -709,19 +803,7 @@
 
 %flexbox { @include flexbox; }
 
-// //----------------------------------
 
-// @mixin inline-flex {
-// 	display:-webkit-inline-box;
-// 	display:-webkit-inline-flex;
-// 	display:-moz-inline-flex;
-// 	display:-ms-inline-flexbox;
-// 	display:inline-flex;
-// }
-
-// %inline-flex { @include inline-flex; }
-
-// //----------------------------------------------------------------------
 
 // // Flexbox Direction
 // //
@@ -734,7 +816,7 @@
 // //
 // // http://w3.org/tr/css3-flexbox/#flex-direction-property
 
-@mixin flex-direction($value:row) {
+@mixin flex-direction2($value:row) {
 	@if $value == row-reverse {
 		-webkit-box-direction:reverse;
 		-webkit-box-orient:horizontal;

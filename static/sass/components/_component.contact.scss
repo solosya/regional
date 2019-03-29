@@ -1,0 +1,21 @@
+.c-contact {
+    $self: &; 
+   &__formsection {
+        background: $white;
+        @include padding-bottom(20);
+    }
+
+    &--messageopen {
+        #{ $self }__formsection {
+            display:none;  
+        }
+        .u-page-info{
+            .u-page-info__discription{
+                display:none;
+            }
+        }
+        .c-messagebox {
+            display:block;
+        }
+    } 
+}

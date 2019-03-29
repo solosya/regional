@@ -1,0 +1,63 @@
+/* Begin feed listing style */
+
+.c-news-feed {
+    &--title {
+        color: $blue;
+        @include font-size(20);
+        line-height: 1.2;
+        font-weight: $weightBold;
+        position: relative;
+        padding-bottom: 15px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 1px;
+            background-color: #979797;
+        }
+    }
+
+    &__list {
+        padding: 0px;
+
+        li {
+            margin-top: 20px;
+        }
+        &--items {
+            @include flexbox();
+        }
+
+        &--counter {
+            color: $blue;
+            @include font-size(16);
+            line-height: 1.2;
+            font-weight: $weightBold;
+            min-width: 35px;
+        }
+
+        &__info {
+            @include calc(width, '100% - 35px');
+            @include flexbox();
+            @include flex-direction(column, vertical);
+
+            &--title {
+                color: $black;
+                @include font-size(16);
+                line-height: 1.25;
+                font-weight: $weightBold;
+            }
+
+            &--description {
+                color: $greyish;
+                @include font-size(13);
+                line-height: 1.54;
+                font-weight: $weightRegular;
+            }
+        }
+    }
+}
+
+/* End feed listing style */

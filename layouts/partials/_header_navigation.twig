@@ -3,317 +3,79 @@
 
 
 
-<header id="masthead" class="site-header container-fluid">
-
-    <div id="mainHeader" class="site-header-main header__navigation showOnScroll">
-        
-        <div class="header-top">
-
-            <div class="container">
-
-
-                <div class="navigation-logo {{site}}">
-                    <a  class="navbar-brand {{site}}" 
-                        href="{{networkData.defaultBlogUrl}}" 
-                        rel="Home" 
-                        tabindex="-1" 
-                        title="Home"
-                        style="background-image:url({{networkData.templatePath}}/static/images/{{site}}-logo.svg?v=2)">
-                    </a>
+<header class="c-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="c-header__top-bar c-header__top-bar-xs">
+                    <a href="javascript:;">Advertise</a>
+                    <a href="javascript:;">Contact</a>
+                    <a href="javascript:;">FAQs</a>
                 </div>
-
-
-                <nav class="sb-custom-menu menu-bar" id="menu-mobile">
-                    <a href="#" class="mobileSearchIcon visible-xs-block visible-sm-block"></a>
-                    <a href="#" class="menu-hamburger"></a>
-
-                    <div class="menuContainer">
-                        <ul id="menu-primary-menu" class="menu primary-menu">
-                            <li class="menu-item-search visible-xs-block visible-sm-block">
-                                <fieldset class="searchPanel">
-                                    <form method="get" action="{{networkData.defaultBlogUrl}}/search">
-                                        <label for="header-search" class="assistive-text sr-only">Search</label>
-                                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                        <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
-                                    </form>
-                                </fieldset>  
-                            </li>  
-
-
-                            {% for parentItem in headermenu %}
-
-                               {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                               {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-                               <li>
-                                    <a {% if "blogs" not in (parentItem.link |raw) and "more" not in (parentItem.link |raw) %}  
-                                                href="{{parentItem.link | raw}}"
-                                        {% endif %} 
-                                        
-                                        class="{{activeClass}} {{externalClass}} {{site}}" 
-                                        
-                                        {% if parentItem.target != "" %} 
-                                            target="{{parentItem.target}}"
-                                        {% endif %} 
-                                            
-                                            style="cursor:pointer;">
-
-                                        {% if parentItem.label != "" %}
-                                            {{parentItem.label}}
-                                        {% elseif parentItem.blogTitle != "" %}
-                                            {{parentItem.blogTitle}}
-                                        {% elseif parentItem.pageTitle != "" %}
-                                            {{parentItem.pageTitle}}
-                                        {% endif %}
-                                    </a>
-
-                                     {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                        <span class="list-arrow"></span>
-
-                                        <ul class="sub-menu">
-                                            {% for childItem in parentItem.children %}
-                                                {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                <li class="{{site}}">
-                                                    <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                     {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                    </a>
-                                                </li>
-                                           {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </nav>
-            </div><!-- .container-->  
-        </div>
-
-        {% set visibility = '' %}
-        <!-- for dairy, only show the header-bottom bar above mobile -->
-        {% if 'dairy' in (networkData.title | lower) %}
-        {%   set visibility = ' visible-md-block visible-lg-block' %}
-        {% endif %}
-
-
-
-        <div class="header-bottom {{ visibility }} {{ site }}">
-
-            {% if paymeter == true %}
-                {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
-                {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
-
-                {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
-            
-                {% if not _User.isGuest() %}
-                    {% set user = _User.getUser() %}
-
-                    <ul class="auth-links">
-                        <li><a href="{{ logoutPath }}">LOG OUT</a></li>
-                        <li><p href="#" class="user__login" id="profile">
-                          {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
-                        </p></li>
-                    </ul> 
-                    
-                {% else %}
-                    <ul class="auth-links">              
-                        <li><a href="{{ loginPath }}">LOG IN</a></li>
-                    </ul>
-                {% endif %}
-            {% endif %}
-
-            <ul class="auth-links visible-md-block visible-lg-block">
-                <li id="menu-item-search" class="menu-item-search">
-                    <fieldset class="searchPanel">
-                        <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                            <label for="header-search" class="assistive-text sr-only">Search</label>
-                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                            <button class="submit {{site}}" type="submit" id="searchsubmit"></button>
-                        </form>
-                    </fieldset>  
-
-                    <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                </li>  
-            </ul>            
-        </div>
-        
-        
-
-
-
-        <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
-            {# desktop foldaway #}
-            <div class="header-top visible-md-block visible-lg-block">
-
-                <div class="container">
-
-                    <div class="navigation-logo {{site}}">
-                        <a  class="navbar-brand {{site}}" 
-                            href="{{networkData.defaultBlogUrl}}" 
-                            rel="Home" 
-                            tabindex="-1" 
-                            title="Home"
-                            style="background-image:url({{networkData.templatePath}}/static/images/{{site}}-logo.svg?v=2)">
-                        </a>
-                    </div>
-
-                    <nav class="sb-custom-menu menu-bar" id="menu-mobile">
-                        <div class="menuContainer">
-                            <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
-                                   
-                                   {% for parentItem in headermenu  %}
-
-                                   {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                   {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-                                   <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{site}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {% if parentItem.label != "" %}
-                                                {{parentItem.label}}
-                                            {% elseif parentItem.blogTitle != "" %}
-                                                {{parentItem.blogTitle}}
-                                            {% elseif parentItem.pageTitle != "" %}
-                                                {{parentItem.pageTitle}}
-                                            {% endif %}
-                                        </a>
-
-                                         {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                            <span class="list-arrow"></span>
-
-                                            <ul class="sub-menu">
-                                                {% for childItem in parentItem.children %}
-                                                    {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                    <li class="{{site}}">
-                                                        <a class="{{externalClass}} {{site}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                         {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                        </a>
-                                                    </li>
-                                               {% endfor %}
-                                            </ul>
-                                        {% endif %}
+                <div class="c-header__weather-info c-header__weather-info-xs">
+                    <div class="c-header__weather-info--date">Wednesday, 09 January 2019</div>
+                    <div class="c-header__weather-info--status">weather</div>
+                </div>
+                <div class="c-header__login-info c-header__login-info-xs">
+                    <a href="javascript:;" class="c-button c-button-rounded c-button--blue-bordered">Log in</a>
+                    <a href="javascript:;" class="c-button c-button-rounded c-button--blue">Subscribe</a>
+                </div>
+                <div class="c-header__main-info">
+                    <a href="javascript:;" class="c-header__main-info--logo">
+                        <img src="{{networkData.templatePath}}/static/images/logo.svg" class="image-fluid" />
+                    </a>
+                    <div class="c-navigation c-navigation-md">
+                        <ul class="c-navigation--list">
+                            <li>
+                                <a href="javascript:;">News</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">Opinion</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">COMMUNITY</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">Sports</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">Video</a>
+                            </li>
+                            <li>
+                                <a href="events.php">Events</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:;">More</a>
+                                <ul class="custom-menu">
+                                    <li>
+                                        <a href="javascript:;">Menu 1</a>
                                     </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </nav>
-                </div><!-- .container-->  
-            </div>
-
-
-
-
-
-
-            {# tablet foldaway #}
-            <div class="header-top visible-sm-block">
-
-                <div class="container">
-
-                    <div class="navigation-logo {{site}}">
-                        <a  class="navbar-brand {{site}}" 
-                            href="{{networkData.defaultBlogUrl}}" 
-                            rel="Home" 
-                            tabindex="-1" 
-                            title="Home"
-                            style="background-image:url({{networkData.templatePath}}/static/images/{{site}}-logo.svg?v=2)">
-                        </a>
-                    </div>
-
-                    <nav class="sb-custom-menu menu-bar" id="menu-mobile">
-                        <a href="#" class="mobileSearchIcon visible-xs-block visible-sm-block"></a>
-                        <a href="#" class="menu-hamburger"></a>
-
-                        <div class="menuContainer">
-                            <ul id="menu-primary-menu" class="menu primary-menu">
-                                <li class="menu-item-search visible-xs-block visible-sm-block">
-                                    <fieldset class="searchPanel">
-                                        <form method="get" action="{{networkData.defaultBlogUrl}}/search">
-                                            <label for="header-search" class="assistive-text sr-only">Search</label>
-                                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                            <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
-                                        </form>
-                                    </fieldset>  
-                                </li>    
-                                                         
-                                {% for parentItem in headermenu  %}
-
-                                   {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                   {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-                                   <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{site}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {% if parentItem.label != "" %}
-                                                {{parentItem.label}}
-                                            {% elseif parentItem.blogTitle != "" %}
-                                                {{parentItem.blogTitle}}
-                                            {% elseif parentItem.pageTitle != "" %}
-                                                {{parentItem.pageTitle}}
-                                            {% endif %}
-                                        </a>
-
-                                         {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                            <span class="list-arrow"></span>
-
-                                            <ul class="sub-menu">
-                                                {% for childItem in parentItem.children %}
-                                                    {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                    <li class="{{site}}">
-                                                        <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                         {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                        </a>
-                                                    </li>
-                                               {% endfor %}
-                                            </ul>
-                                        {% endif %}
+                                    <li>
+                                        <a href="javascript:;">Menu 2</a>
                                     </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </nav>
-                </div><!-- .container-->  
-            </div>            
-
-
-            <div class="header-bottom {{ visibility }} {{site}}">
-                {% if paymeter == true %}
-
-                    {% set loginPath  = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
-                    {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
-                    {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
-                
-                    {% if not _User.isGuest() %}
-                        <ul class="auth-links">
-                            <li><a href="{{ logoutPath }}">LOG OUT</a></li>
-                        </ul>                    
-                    {% else %}
-                        <ul class="auth-links">              
-                            <li><a href="{{ loginPath }}">LOG IN</a></li>
+                                    <li>
+                                        <a href="javascript:;">Menu 3</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
-                    {% endif %}
-                {% endif %}            
-
-                <ul class="auth-links visible-md-block visible-lg-block">
-                    <li id="menu-item-search" class="menu-item-search">
-                        <fieldset class="searchPanel">
-                            <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                <label for="header-search" class="assistive-text sr-only">Search</label>
-                                <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                <button class="submit {{site}}" type="submit" id="searchsubmit"></button>
-                            </form>
-                        </fieldset>  
-
-                        <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                    </li>  
-                </ul>   
-
+                        <div class="c-navigation__icons">
+                            <div class="c-navigation__icons--search fa fa-search js-searchButton"></div>
+                            <div class="c-navigation__icons--navicon fa fa-navicon js-menu"></div>
+                        </div>
+                        <div class="c-navigation__search">
+                            <div class="c-navigation__search--icon fa fa-search"></div>
+                            <input type="text" placeholder="Seach"/>
+                            <div class="c-navigation__search--icon icon-close fa fa-times js-searchClose"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div> <!-- #foldaway-panel -->
-
-
-
-
-
-
-    </div><!-- .site-header-main -->
+        </div>
+    </div>
 </header>
-
+<div class="responsive-standalone">
+    <ul class="standalone-menu"></ul>
+    <div class="responsive-standalone-close"><span class="fa fa-times"></span></div>
+</div>
+<div class="responsive-standalone-overlay"></div>

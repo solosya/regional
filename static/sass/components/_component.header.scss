@@ -1,0 +1,256 @@
+/* Begin header style */
+
+.c-header {
+    padding-top: 10px;
+    margin-bottom: 50px;
+
+    &__top-bar {
+        border-bottom: 1px solid $offwhite;
+        @include flexbox();
+        @include justify-content(center);
+
+        a {
+            color: $greyish;
+            @include font-size(11);
+            letter-spacing: 0.4px;
+            padding: 6px 11px;
+            font-weight: $weightRegular;
+            @include transition(all 0.3s ease);
+
+            &:hover {
+                color: $blue;
+            }
+        }
+
+        @include responsive(xs) {
+            @include justify-content(flex-end);
+        }
+    }
+
+    &__weather-info {
+        margin: 15px 0;
+        @include flexbox();
+        @include flex-direction(column, vertical);
+        @include align-items(flex-start);
+        @include justify-content(flex-start);
+
+        @include responsive(xs) {
+            @include flex-direction(row, horizontal);
+            @include align-items(center);
+            @include justify-content(space-between);
+        }
+
+        &--date {
+            @include font-size(13);
+            letter-spacing: 1px;
+            color: $greyish;
+            font-weight: $weightRegular;
+        }
+    }
+
+    &__login-info {
+        @include flexbox();
+        @include flex-direction(row, horizontal);
+        @include align-items(center);
+        @include justify-content(center);
+        margin-bottom: 20px;
+
+        @include responsive(xs) {
+            @include justify-content(flex-end);
+            margin-bottom: 0px;
+        }
+    }
+
+    &__main-info {
+        @include flexbox();
+        @include align-items(flex-end);
+        @include justify-content(space-between);
+        position: relative;
+
+        &--logo {
+            width: 162px;
+            display: block;
+        }
+    }
+}
+
+.c-navigation {
+    @include flexbox();
+    @include align-items(center);
+
+    &--list {
+        display: none;
+        @include align-items(center);
+        padding: 0px;
+        margin: 0px;
+
+        li {
+            position: relative;
+            margin: 0 15px;
+
+            a {
+                text-transform: uppercase;
+                @include font-size(14);
+                letter-spacing: 1px;
+                line-height: 1.07;
+                font-weight: $weightMedium;
+                color: $black;
+                @include transition(all 0.3s ease);
+
+                &:hover {
+                    color: $blue;
+                }
+            }
+
+            &.dropdown {
+                .custom-menu {
+                    display: none;
+                    position: absolute;
+                    @include calc(top, '100% + 10px');
+                    left: auto;
+                    right: 0;
+                    @include box-shadow(4px 4px 6px 0 rgba($black, 0.07));
+                    background-color: $offwhite;
+                    border: none;
+                    @include border-radius(0);
+                    z-index: 999;
+                    min-width: 160px;
+                    padding: 10px 0;
+                    
+                    &:before {
+                        content: '\f0d8';
+                        position: absolute;
+                        font-family: $iconfont;
+                        color: $offwhite;
+                        right: 10px;
+                        top: -23px;
+                        @include font-size(35);
+                        line-height: 1;
+
+
+                    }
+
+                    li {
+                        width: 100%;
+                        text-align: right;
+                        margin: 0px;
+
+                        a {
+                            display: block;
+                            padding: 11px 20px;
+                            color: $black;
+                            text-transform: uppercase;
+                            @include font-size(14);
+                            line-height: 1.07;
+                            letter-spacing: 1px;
+
+                            &:hover,
+                            &:focus {
+                                background-color: $blue;
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:hover,
+            &:focus {
+                &.dropdown {
+                    .custom-menu {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    &__icons {
+        @include flexbox();
+        @include align-items(center);
+
+        &--search {
+            color: #b1b1b1;
+            @include font-size(18);
+            cursor: pointer;
+            @include transition(all 0.3s ease);
+
+            &:hover {
+                color: $blue;
+            }
+        }
+
+        &--navicon {
+            display: block;
+            margin-left: 15px;
+            color: #b1b1b1;
+            @include font-size(18);
+            cursor: pointer;
+            @include transition(all 0.3s ease);
+
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+
+    &__search {
+        position: absolute;
+        background: $white;
+        @include calc(width, '100% - 120px');
+        height: 40px;
+        @include flexbox();
+        @include justify-content(flex-end);
+        @include align-items(center);
+        left: auto;
+        right: 0;
+        top: 0;
+        display: none;
+
+        &--icon {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #b1b1b1;
+            @include font-size(18);
+
+            &.icon-close {
+                right: 0;
+                left: auto;
+                cursor: pointer;
+
+                &:hover {
+                    color: $error;
+                }
+            }
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid $offwhite;
+            padding: 0 30px;
+            height: 40px;
+        }
+    }
+
+    @include responsive(md) {
+        .c-navigation {
+            &--list {
+                @include flexbox();
+            }
+
+            &__icons {
+                &--navicon {
+                    display: none;
+                }
+            }
+
+            &__search {
+                @include calc(width, '100% - 250px');
+            }
+        }
+    }
+}
+
+/* End header style */

@@ -57,11 +57,13 @@ gulp.task('concat', function () {
 
 gulp.task('sass', function() {
     return gulp.src([
-            './static/css/main.scss',
+            './static/sass/main.scss',
         ])
         .pipe(sourcemaps.init())
         .pipe(sass({includePaths: [
-            './static/css/partials', 
+            './static/sass/components', 
+            './static/sass/cards', 
+            './static/sass/vendors', 
         ]}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./static/css'));

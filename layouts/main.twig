@@ -54,6 +54,8 @@
     <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-144px.png" sizes="144x144" id="apple-icon-lg" />
     
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700" rel="stylesheet"> 
 
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
     {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
@@ -74,7 +76,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=84963d84" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=bf6bb671" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -155,7 +157,7 @@
 </head>
 
 
-<body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-class="{{ pageClass | split(' ')[0] }}" data-site="{{site}}" data-networkid="{{networkData['id']}}" data-v="26">
+<body class="body {{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-class="{{ pageClass | split(' ')[0] }}" data-site="{{site}}" data-networkid="{{networkData['id']}}" data-v="26">
 
 {{ this.beginBody() }}
       
@@ -227,4 +229,3 @@
 {{ this.endPage() }}
 
 </html>
-{% endif %}

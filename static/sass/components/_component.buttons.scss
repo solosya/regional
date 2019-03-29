@@ -1,0 +1,74 @@
+/* Begin header style */
+
+.c-button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    display: inline-block;
+    border: 2px solid $transparent;
+    @include font-size(13);
+    line-height: 1;
+    letter-spacing: 1.4px;
+    font-weight: $weightMedium;
+    @include transition(all 0.3s ease);
+    min-width: 120px;
+    text-align: center;
+    height: 40px;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    text-transform: uppercase;
+    
+    &-block {
+        width: $viewportSize;
+        display: block;
+    }
+
+    &-inline {
+        display:inline-block;
+    }
+
+    &-rounded {
+        @include border-radius(25px);
+    }
+
+    &-radius {
+        @include border-radius(4px);
+    }
+
+    &--blue {
+        background-color: $blue;
+        border-color: $blue;
+        color: $white;
+
+        &:hover {
+            background-color: darken($blue, 18%);
+            border-color: darken($blue, 18%);
+            color: $white;
+        }
+
+        &-bordered {
+            background-color: $white;
+            border-color: $blue;
+            color: $blue;
+
+            &:hover {
+                color: $white;
+                background-color: darken($blue, 18%);
+                border-color: darken($blue, 18%);
+            }
+        }
+    }
+
+    +.c-button {
+        margin-left: 10px;
+    }
+    
+    &-disabled {
+        @include opacity(.5);
+    }
+}
+
+/* End header style */
