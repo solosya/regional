@@ -1,0 +1,191 @@
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+
+  var rubicontag = rubicontag || {};
+  rubicontag.cmd = rubicontag.cmd || [];
+
+  // this is the number of your dfp account:
+  var dfpacct = '4082264';
+  // leave this variable, it needs to be here
+  var nextAdId = 1;
+  var rubiconAcct = 14654;
+  var gptran = false;
+  var teadsAd = false;
+  var mrecPOStarget = 1;
+  var bannerPOStarget = 2;
+  var POStarget = 1;
+  // Each ad space needs two attributes, all applicable ad shape sizes, and a mapping key
+  // the size attribute defines all creative sizes that can display when an ad space is called,
+  // The first setting in map determines minimum screen size, then lists which ad shapes to display.
+  // It will try to grab the first listed, and will move to the next if the first is unavailable.
+  // for publish website advertising, width 992+ is desktop, 769-991 is tablet and 0-768 is mobile
+
+
+var networkSelect = {
+    'dairy' : 'dairy_news',
+    'shepparton' : 'sheppnews',
+    'shepp' : 'sheppnews',
+    'country' : 'countrynews',
+    'riverine' : 'riverineherald',
+    'benalla' : 'benallaensign',
+    'campaspe' : 'campaspenews',
+    'cobram' : 'cobramcourier',
+    'corowa' : 'corowafreepress',
+    'deniliquin' : 'denipt',
+    'kyabram' : 'kyfreepress',
+    'mcivor' : 'mcivortimes',
+    'seymour' : 'seymourtelegraph',
+    'tatura' : 'taturaguardian',
+    'yarrawonga' : 'yarrawongachronicle',
+    'riverina' : 'southernriverinanews'
+};
+
+var siteAdSections = {
+
+  'sport' : [
+    'sport',
+    'australian rules',
+    'cricket',
+    'golf',
+    'netball',
+    'racing',
+    'soccer',
+    'tennis'
+  ],
+
+  'lifestyle' : [
+    'lifestyle',
+    'fashion',
+    'garden',
+    'home'
+  ]
+
+};
+  
+
+var adSizes = {
+  'desktop-banner-main' : [
+    // size
+     [[970,250],[970,90],[728,90]],
+    // map
+     [
+      [[992,0],[[970,250],[970,90],[728,90]]],
+      [[0,0],[]]
+     ],
+     // targetting
+     'POS'
+    ],
+  'tablet-banner-main' : [
+    [728,90],
+    [
+      [[768,0],[728,90]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'mobile-banner-main' : [
+    [320,50],
+    [ 
+      [[300,0],[320,50]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'desktop-banner' : [
+    // size
+     [[970,90],[728,90]],
+    // map
+     [
+      [[992,0],[[970,90],[728,90]]],
+      [[0,0],[]]
+     ],
+     // targetting
+     'POS'
+    ],
+  'tablet-banner' : [
+    [728,90],
+    [
+      [[768,0],[728,90]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'desktop-mrec' : [
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'tablet-mrec' : [
+    ['fluid',[300,250]],
+    [ 
+      [[768,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'mobile-mrec' : [
+    ['fluid',[300,250]],
+    [
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'desktop-hpage' : [
+    [300,600],
+    [
+      [[992,0],[300,600]],
+      [[0,0],[]]
+    ],
+    'POS'
+  ],
+  'desktop-teads' : [
+    [[1,1]],
+    [
+      [[992,0],[1,1]],
+      [[0,0],[]]
+    ],
+    ''
+  ],
+  'tablet-teads' : [
+    [[1,1]],
+    [
+      [[768,0],[1,1]],
+      [[0,0],[]]
+    ],
+    ''
+  ],
+  'mobile-teads' : [
+    [[1,1]],
+    [
+      [[300,0],[1,1]],
+      [[0,0],[]]
+    ],
+    ''
+  ],
+  'desktop-interstitial' : [
+    [[1,1]],
+    [
+      [[992,0],[1,1]],
+      [[0,0],[]]
+    ],
+    ''
+  ],
+  'tablet-interstitial' : [
+    [[1,1]],
+    [
+      [[768,0],[1,1]],
+      [[0,0],[]]
+    ],
+    ''
+  ]
+};
+      
+   
+
+</script>

@@ -1,0 +1,214 @@
+
+{% set themeColors = networkData['styling']['colours'] %}
+{% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
+{% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
+
+{% if 'dairy' in (networkData.title | lower) %}
+{%  set site = 'dairy' %}
+{% endif %}
+
+{% if (networkData.title | lower) == 'country news' %}
+{%  set site = 'country' %}
+{% endif %}
+
+<style type="text/css">
+{% if primaryFont != "" %}
+    body, .body, p {
+        font-family: "{{primaryFont | replace({'+': ' '})}}" !important;
+    }
+{% endif %}
+
+{% if secFont != "" %}
+    h1, h2, h3, h4, h5, a.header__navigation-link {
+        font-family: "{{secFont | replace({'+': ' '})}}" !important;
+    }
+{% endif %}
+
+{% if themeColors.linkColor != "" %}
+    a {
+        color: {{themeColors.linkColor}} !important;
+    }
+{% endif %}
+
+{% if themeColors.linkHoverColor != "" %}
+    a:hover {
+        color: {{themeColors.linkHoverColor}} !important;
+    }
+{% endif %}
+
+{% if themeColors.headingColor != "" %}
+    div.category,
+    p.category,
+    .searchPage h1,
+    div.most-popular > h2, div.trending > h2,
+    div.card-popular::before,
+    h2.sidebar-header,
+    div.temp-desc,
+    .search a.card>article>.content .author p,
+    div.hk h2,
+    .site-main .section-header p>a,
+    .site-main .subscribe > h2,
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover    
+     {
+        color: {{themeColors.headingColor}} !important;
+    }
+
+    .social-modal__channel {
+        color: {{themeColors.headingColor}} !important;
+    }    
+
+    .home-feature > a.withImage__content>article>.content>.category,
+    .home-feature-sm > a.withImage__content>article>.content>.category,
+    .home-feature-xs > a.withImage__content>article>.content>.category,
+    .home-feature-thin > a.withImage__content>article>.content>.category {
+        color: white !important;
+    }
+
+    .foo {
+        content: {{ site }};
+    }
+
+    .bar {
+        content: {{ networkData.title | lower }};
+    }
+
+    {% if site == 'dairy' %}
+
+        /*div.trending > h2,
+        h2.sidebar-header {
+            color: #f03746 !important;
+        }*/
+
+        .card-opinion.final a.card>article>.content>h2 {
+            color: white !important;
+        }
+
+    {% endif %}
+
+    {% if site == 'country' %}
+
+        div.trending > h2,
+        div.most-popular > h2 {
+            color: #39393a !important;
+        }
+
+    {% endif %}
+
+    .sb-custom-menu .searchPanel>form>button.submit,
+    .site-main .current-issue-card,
+    .searchPanel>form>button.submit
+    {
+        background-color: {{themeColors.navigationHoverColor}} !important;
+    }
+
+    .sb-custom-menu ul.menu>li>a:hover {
+        color: {{themeColors.navigationHoverColor}} !important;
+    } 
+
+    .sb-custom-menu ul.sub-menu>li:hover
+    {
+        background-color: {{themeColors.headingColor}} !important;
+    }
+
+    .sb-custom-menu ul.sub-menu>li:hover>a
+    {
+        color: white !important;
+    }
+
+
+    @media screen and (max-width: 992px) {
+        .sb-custom-menu ul.menu>li:hover {
+            background-color: {{themeColors.headingColor}} !important;
+        }
+        .sb-custom-menu ul.menu>li:hover>a {
+            background-color: {{themeColors.headingColor}} !important;
+            color: white !important;
+        }
+    }    
+
+
+    /* overrides */
+    .site-main .section-header div.hk h2 {
+        color: black !important;
+    }
+
+{% endif %}
+
+{% if themeColors.navigationColor != "" %}
+    .header__search-text, a.header__navigation-link {
+        color: {{themeColors.navigationColor}} !important;
+    }
+
+{% endif %}
+
+{% if themeColors.navigationHoverColor != "" %}
+    a.header__navigation-link:hover {
+        color: {{themeColors.navigationHoverColor}} !important;
+    }
+{% endif %}
+
+{% if themeColors.navigationActiveColor != "" %}
+    a.header__navigation-link.header__navigation-selected {
+        color: {{themeColors.navigationActiveColor}} !important;
+    }
+{% endif %}
+
+/*{% if themeColors.navigationBgColor != "" %}
+.header__navigation {
+    background-color: {{themeColors.navigationBgColor}} !important;
+}
+{% endif %}*/
+
+{% if themeColors.headerBgColor != "" %}
+.header-bottom {
+    background-color: {{themeColors.headerBgColor}} !important;
+}
+{% endif %}
+{% if themeColors.footerBgColor != "" %}
+.site-footer .footer-top{
+    background-color: {{themeColors.footerBgColor}} !important;
+}
+{% endif %}
+
+{% if themeColors.pageBgColor != "" %}
+body, body > .section {
+    background-color: {{themeColors.pageBgColor}} !important;
+}
+.sub_header {
+    background-color: {{themeColors.pageBgColor}} !important;
+}
+{% endif %}
+
+
+{% if themeColors.headingColor != "" %}
+{%  set iconColour = themeColors.headingColor %}
+{% else %}
+{%  set iconColour = '#F03746' %}
+{% endif %}
+
+.search-icon-mobile {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="https://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">\
+        <g fill="none" fill-rule="evenodd" stroke="{{ iconColour }}">\
+            <path d="M6.673 12.917c3.133 0 5.673-2.668 5.673-5.958C12.346 3.668 9.806 1 6.673 1S1 3.668 1 6.959c0 3.29 2.54 5.958 5.673 5.958zM10.579 11.5l3.075 3.205"/>\
+        </g>\
+    </svg>');
+}
+
+/*.weather-svg {
+    fill: #FFF;
+    stroke: {{ iconColour }};
+}*/
+
+.card-opinion.final > a.card {
+    background: {{ iconColour }};
+}
+
+
+
+
+{% set customCss = networkData['styling']['customStyleSheet'] %}
+{% if customCss != "" %}
+        {{customCss | raw }}
+{% endif %}
+
+</style>

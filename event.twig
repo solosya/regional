@@ -1,0 +1,175 @@
+{% import "partials/quotes.twig" as quotes %}
+
+{{ set(this, 'title', event.title) }}
+{{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
+
+{{this.registerJs("Acme.eventMap = new Acme.GoogleMap();")}}
+{{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}}
+
+
+{% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+
+
+{% set eventImage = false %}
+{% if event.media | length > 0 %}
+    {% set eventImage = _Media.getMediaUrl(event.media[0], 1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
+{% endif %}
+
+{% set startDate = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j F Y') %}
+{% set endDate = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'j F Y') %}
+
+{% set startTime = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
+
+{% set date = date() %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
+
+
+<section class="">
+
+    <div class="container event">
+
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-12 col-md-9 event-content">
+
+
+                {% if eventImage %} 
+                     <figure class="featured">
+                         <img src="{{eventImage}}" class="img-responsive">
+                     </figure>
+                 {% endif %}                
+
+                </div>
+            </div>
+
+
+            {# social icons #}
+
+            <div class="col-md-6 event-content event-content__body">
+                <div class="row">
+                    <div class="content-block-top">
+                        {# {% if _User.isAdminUser() %}
+                            <br />
+                            <a href="{{event.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
+                        {% endif %} #}
+
+                        <a href="{{ networkData.defaultBlogUrl }}/@events"><p class="category" >Events</p
+                        ></a><time datetime="{{publishDate}}">{{ event.publishDate }}</time>
+                        
+                        <h1>{{ quotes.smarten(event.title) }}</h1>
+                        
+                        {# <p class="author"><span>By</span> {{ event.createdBy['name'] }}</p> #}
+                    </div>
+
+                    <div class="col-md-9">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{event.url}}&title={{ event.title|url_encode }}" class="share-icon facebook-icon"></a
+                        ><a href="https://twitter.com/share?text={{ event.title|url_encode }}&url={{event.url}}" class="share-icon twitter-icon"></a
+                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{event.url}}" class="share-icon email-icon"></a>
+                    </div>
+                </div>                
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-9 event-details row">
+
+                        <div class="visible-xs">
+                            {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                            {% set leftDays = difference.days %}
+                            {% if leftDays > 0 %}
+                                <p class="date">{{ startDate }} - {{ endDate }}</p>
+                            {% else %}
+                                <p class="date">{{ startDate }}</p>
+                                <p class="time">{{ startTime }} - {{ endTime }} </p>
+                            {% endif %}
+
+                            <p class="address">
+                                {{ event.address.address1 }},<br/>
+                                {{ event.address.suburb }} {{ event.address.state  }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="content">
+                                {{ event.content | raw }}
+                            </p>
+
+                            {% if event.latitude and event.longitude %}
+                                <div class="event-map">
+                                    <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-1 side-border">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 event-sidebar hidden-xs">
+                <div class="event-details">
+                    {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                    {% set leftDays = difference.days %}
+                    <div class="col-sm-9 event-detail">    
+                        {% if leftDays > 0 %}
+                            <div class="col-sm-2 date {{site}}"></div><p class="date col-sm-7">{{ startDate }} - {{ endDate }}</p>
+                        {% else %}
+                            <div class="col-sm-2 date {{site}}"></div><p class="date col-sm-7">{{ startDate }}</p><br>
+                            <div class="col-sm-2 time {{site}}"></div><p class="time col-sm-7">{{ startTime }} - {{ endTime }} </p>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-sm-9 event-detail">
+                        <div class="col-sm-2 address {{site}}"></div><p class="address col-sm-7">
+                            {{ event.address.address1 }},<br/>
+                            {{ event.address.suburb }} {{ event.address.city }}
+                        </p>
+                    </div>
+
+                    {% if event.websiteUrl != "" %}
+                        <div class="col-sm-9 event-detail">
+                            <div class="col-sm-2 website {{site}}"></div><a class="website col-sm-7" target="_blank" href="{{ event.websiteUrl }}">{{ event.websiteUrl }}</a>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-sm-9 event-detail">
+                        <div class="col-sm-2 contact {{site}}" src="{{networkData.templatePath}}/static/images/event/envelope.svg"></div><p class="contact col-sm-7">
+                        
+                        {% if event.contactName != "" %}
+                            {{ event.contactName }}
+                        {% endif %}
+                        {% if event.contactEmail != "" %}
+                            <a href="mailto:{{ event.contactEmail }}">{{ event.contactEmail }}</a>
+                        {% endif %}
+                        {% if event.contactNumber != "" %}
+                            <a href="mailto:{{ event.contactNumber }}">{{ event.contactNumber }}</a>
+                        {% endif %}
+
+                        </p>
+                    </div>
+                </div>   
+
+                <div class="col-sm-9 event-sidebar__events">
+                    <h2 class="{{site}}">UPCOMING EVENTS</h2>
+                    {% for i in 0..3 if events[i] %}
+                        {{this.render('partials/_single-event.twig', {
+                            event: events[i],
+                            imageSize: {width: 90},
+                            site:site,
+                            containerClass: 'card-event-list-article'
+                        }) | raw}}
+
+                        {# {% if i < 3 %}
+                            <hr class="divide12">
+                        {% endif %} #}
+
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</section><!-- .home-page-content-->

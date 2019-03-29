@@ -1,0 +1,24 @@
+{# {{this.registerJs("CardController();")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{% set limit = 20 %}
+{% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search, 'sortBy': 'published'}) %}
+{% set firstCount = articles | length %}
+
+{% set networkData = _Network.getNetworkData() %}
+{% set site          = networkData.title | lower | split(" ")[0]%}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+
+<main id="main" class="site-main searchPage" role="main">
+
+
+</main><!-- .site-main -->
+

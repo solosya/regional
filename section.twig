@@ -1,0 +1,39 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+
+
+{% set limit = 18 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
+
+{# {% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network' }) %} #}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set popCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+
+
+
+<main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
+    
+    <div class="container">
+
+
+
+    </div>
+</main><!-- .site-main -->

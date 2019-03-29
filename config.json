@@ -1,0 +1,177 @@
+{
+    "compressHtml" : false,
+    "module" : {
+        "debug" : {
+           "enabled" : true
+        },
+        "event" : {
+           "enabled" : true
+        },
+        "blog" : {            
+            "endUserAccess" : [
+
+                                  "jobs",     "prop",      "events",
+                    "local",        "",         "",         "422",    
+                    "Shepparton",   "",         "",         "1203",   
+                  "country",        "",         "",         "1172",   
+                  "shepptest",      "",         "",         "972",   
+              "countrylive",        "",         "",         "1423",   
+                      "UAT",        "",         ""
+                
+            ],
+            "extendedAttributes": [
+                {
+                    "name": "publishto",
+                    "label": "Publish to...",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "sectionlabel",
+                    "label": "Section Label",
+                    "type": "inputbox"
+                },
+                {
+    				"label": "",
+    				"type": "radio",
+    				"name": "premium",
+    				"options": {
+    					"Premium": "Premium",
+    					"Free": "Free"
+    				}
+    			}
+            ]
+        },
+        "article": {
+    		"extendedAttributes": [
+                {
+    				"label": "",
+    				"type": "radio",
+    				"name": "premium",
+    				"options": {
+    					"Premium": "Premium",
+    					"Free": "Free"
+    				}
+    			},
+                {
+                    "label": "Teads Ad",
+                    "type": "radio",
+                    "name": "teads",
+                    "options": {
+                        "teadsOn": "on",
+                        "teadsOff": "off"
+                    }
+                },
+                {
+                    "name": "listingclose",
+                    "label": "Listing close",
+                    "type": "inputbox",
+                    "datetimepicker": true
+                },
+                {
+                    "name": "contactcompany",
+                    "label": "Company",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactname",
+                    "label": "Contact name",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactemail",
+                    "label": "Contact email",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactphone",
+                    "label": "Contact phone",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactname2",
+                    "label": "Contact name 2",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactemail2",
+                    "label": "Contact email 2",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactphone2",
+                    "label": "Contact phone 2",
+                    "type": "inputbox"
+                },
+    			{
+    				"name": "auction_date",
+    				"label": "Auction Date",
+    				"type": "inputbox",
+    				"datetimepicker": true
+                },
+    			{
+    				"name": "inspect_date1",
+    				"label": "Inspection Date 1",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspect_date2",
+    				"label": "Inspection Date 2",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspect_date3",
+    				"label": "Inspection Date 3",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspect_date4",
+    				"label": "Inspection Date 4",
+    				"type": "inputbox",
+    				"datetimepicker": true
+                },
+    			{
+    				"name": "inspection_other",
+    				"label": "Inspection - other",
+    				"type": "inputbox"
+    			},
+                {
+                    "name": "pricerange",
+                    "label": "Price",
+                    "type": "inputbox"
+                },
+    			{
+    				"name": "listing_type",
+    				"label": "Listing Type",
+    				"type": "dropdown",
+    				"options": {
+    					"rent": "Rent",
+    					"buy": "Buy"
+    				}
+    			},
+    			{
+    				"name": "bedroom_count",
+    				"label": "Number of bedrooms",
+    				"type": "inputbox"
+    			},
+                {
+                    "name": "bathroom_count",
+                    "label": "Number of bathrooms",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "car_count",
+                    "label": "Number of car spaces",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "features",
+                    "label": "Features (comma separated)",
+                    "type": "inputbox"
+                }
+    		]
+    	}
+    }
+}
