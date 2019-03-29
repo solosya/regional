@@ -19,8 +19,8 @@
             {% if params.lazyload == false %}
                 <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-fluid" src="{{params.articleImg}}">
             {% else %}  
-            {# ADD LAZYLOAD  src="{{params.placeholder}}" #}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-fluid lazyload" src="{{params.articleImg}}" data-original="{{params.articleImg}}">
+            {# ADD LAZYLOAD  class="lazyload" src="{{params.placeholder}}" #}
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-fluid" src="{{params.articleImg}}" data-original="{{params.articleImg}}">
             {% endif %}
             <div class="video-icon"></div>
 
