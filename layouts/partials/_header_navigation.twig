@@ -26,38 +26,47 @@
                     </a>
                     <div class="c-navigation c-navigation-md">
                         <ul class="c-navigation--list">
-                            <li>
-                                <a href="javascript:;">News</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">Opinion</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">COMMUNITY</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">Sports</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">Video</a>
-                            </li>
-                            <li>
-                                <a href="events.php">Events</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="javascript:;">More</a>
-                                <ul class="custom-menu">
-                                    <li>
-                                        <a href="javascript:;">Menu 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">Menu 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">Menu 3</a>
-                                    </li>
-                                </ul>
-                            </li>
+
+                            {% for parentItem in headermenu %}
+                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                                {% set children = parentItem.children is defined and parentItem.children | length > 0  %}
+
+                                <li class="dropdown">
+                                    <a href="{{parentItem.link | raw}}"
+                                        {% if parentItem.target != "" %} 
+                                            target="{{parentItem.target}}"
+                                        {% endif %} 
+
+                                    
+                                    >
+                                        {% if parentItem.label != "" %}
+                                            {{parentItem.label}}
+                                        {% elseif parentItem.blogTitle != "" %}
+                                            {{parentItem.blogTitle}}
+                                        {% elseif parentItem.pageTitle != "" %}
+                                            {{parentItem.pageTitle}}
+                                        {% endif %}
+
+                                    </a>
+                                
+
+                                    {% if children %}
+                                        <ul class="custom-menu">
+                                            <li>
+                                                <a href="javascript:;">Menu 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">Menu 2</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">Menu 3</a>
+                                            </li>
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+
                         </ul>
                         <div class="c-navigation__icons">
                             <div class="c-navigation__icons--search fa fa-search js-searchButton"></div>
