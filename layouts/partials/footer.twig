@@ -1,7 +1,54 @@
 {% set link = _Blog.getHomeBlogSettings() %}
 {% set footerMenu = _Menu.get({'menuType': 'footer'}) %}
 
-<footer class="site-footer">
+<footer class="c-footer c-footer-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
 
+                <div class="c-footer__container">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <a href="javascript:;" class="c-footer--logo">
+                                <div class="c-footer--logo-text">The News</div>
+                                <div class="c-footer--logo-tagLine">REGIONAL VICTORIA</div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="c-footer__navigation c-footer__navigation-sm">
+                                <a href="javascript:;">REgional</a>
+                                <a href="javascript:;">RURAL</a>
+                                <a href="javascript:;">VIDEO</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="c-footer__navigation c-footer__navigation-sm">
+                                <a href="javascript:;">REAL ESTATE</a>
+                                <a href="javascript:;">Sports</a>
+                                <a href="javascript:;">EVENTS</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="c-footer__navigation c-footer__navigation-sm">
+                                <a href="javascript:;">Opinion</a>
+                                <a href="javascript:;">FAQs</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="c-footer__navigation c-footer__navigation-sm u-border-left u-border-left-sm">
+                                <a href="javascript:;">Advertise</a>
+                                <a href="javascript:;">Contact</a>
+                                <a href="javascript:;">Log in</a>
+                                <a href="javascript:;">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-footer__bottom c-footer__bottom-sm">
+                    <div class="c-footer__bottom--copyright">&copy; Copyright The News Regional Victoria 2019</div>
+                    <div class="c-footer__bottom--powered">POWERED BY AAP PUBLISH</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
-
