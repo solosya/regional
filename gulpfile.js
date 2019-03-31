@@ -17,11 +17,11 @@ gulp.task('styles', function(callback) {
 
 
 gulp.task('cache',  function() {
-  return gulp.src('layouts/main.twig')
+    return gulp.src('layouts/main.twig')
     .pipe(buster({
-      tokenRegExp: /\/(concat\.min\.css)\?v=[0-9a-z]+/,
-      assetRoot: __dirname + '/static/deploy/',
-      hashes: hasher.hashes,
+        tokenRegExp: /\/(concat\.min\.css)\?v=[0-9a-z]+/,
+        assetRoot: __dirname + '/static/deploy/',
+        hashes: hasher.hashes,
     }))
     .pipe(gulp.dest('layouts/'));
 });

@@ -1,0 +1,128 @@
+.u-quarter {
+    .card {
+        &--media {
+            @extend .u-image-covered;
+
+            width: 98px;
+            height: 130px;
+        }
+
+        &__container {
+            @include calc(width, '100% - 112px');
+            margin-left: 14px;
+        }
+
+        &__info {
+            @include calc(height, '100% - 40px');
+
+            &--heading {
+                min-height: 66px;
+                max-height: 66px;
+            }
+        }
+
+        &__info {
+            &--heading {
+                @include font-size(16);
+                font-weight: $weightMedium;
+                line-height: 1.18;
+                color: $black;
+                min-height: inherit;
+            }
+
+            &--description {
+                @include font-size(13);
+                font-weight: $weightRegular;
+                line-height: 1.54;
+                color: $greyish;
+                display: none;
+            }
+        }
+
+        &.u-video {
+            .card--media {
+                .video-icon {
+                    @include size(40px);
+                }
+            }
+        }
+
+        &.u-without-image {
+            .card {
+                &__container {
+                    width: 100%;
+                    margin-left: 0px;
+                    padding: 0px 20px 0;
+                }
+
+                &__info--description {
+                    margin-bottom: 15px;
+                    display: block;
+                    max-height: 90px;
+                    overflow: hidden;
+    
+                }
+            }
+        }
+
+        &.u-social {
+            .social-icon {
+                @include size(35px);
+
+                &:before {
+                    @include font-size(16);
+                    line-height: 35px;
+                }
+            }
+
+            &.u-without-image {
+                .card {
+                    &__container {
+                        padding-top: 50px;
+                    }
+
+                    &__info--heading {
+                        max-height: 62px;
+                    }
+                }
+            }
+        }
+
+        @include responsive(sm) {
+            @include flex-direction(column, vertical);
+
+            .card {
+                &--media {
+                    height: inherit;
+                    width: 100%;
+                    background: $white none repeat scroll 0 0;
+
+                    img {
+                        display: block;
+                    }
+                }
+
+                &__info--description {
+                    display: block;
+                }
+
+                &__container {
+                    width: 100%;
+                    margin-left: 0;
+                }
+
+                &__info {
+                    @include calc(height, '100% - 34px');
+                }
+            }
+
+            &.u-video {
+                .card--media {
+                    .video-icon {
+                        @include size(50px);
+                    }
+                }
+            }
+        }
+    }
+}

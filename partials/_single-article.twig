@@ -87,7 +87,7 @@
         
 
         <a  href                = "{{article.url}}" 
-            class               = "{{swap}} c-cards-view c-cards-view-sm c-cards-view-md {{hasArticleMediaClass}}" 
+            class               = "{{swap}} c-cards-view {{hasArticleMediaClass}}" 
             data-id             = "{{article.articleId}}" 
             data-guid           = "{{article.guid}}" 
             data-position       = "{{position}}" 
@@ -129,7 +129,7 @@
 
 
 
-{# 
+
     {% set social = article.social %}
     {% set mediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content' : 'without__image' %}
     {% set videoClass = (social.media['type'] == 'video') ? 'video' : '' %}
@@ -172,7 +172,7 @@
                     <div class="category {{socialSource}} {{site}}">{{socialSource}}</div>
                     
                     <p id="updateSocial{{article.socialId}}" data-update="0" class="j-truncate">
-                             {{ quotes.smarten(social.content  | raw) }}
+                        {{ quotes.smarten(social.content  | raw) }}
                     </p>
 
                     
@@ -192,6 +192,6 @@
             {% endif %}
 
         </a>
-    </div> #}
+    </div>
 
 {% endif %}

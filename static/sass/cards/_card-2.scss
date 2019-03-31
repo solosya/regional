@@ -1,0 +1,135 @@
+@mixin card-2-base() {
+
+    .c-cards-view {
+        height: inherit;
+
+        &--media {
+            width: 98px;
+            height: 130px;
+        }
+
+        &__container {
+            @include calc(width, '100% - 112px');
+            margin-left: 14px;
+            height: inherit;
+        }
+
+        &__info--heading {
+            max-height: 70px;
+        }
+
+        &.u-social {
+            .social-icon {
+                @include size(30px);
+
+                &:before {
+                    @include font-size(13);
+                    line-height: 32px;
+                }
+            }
+
+            &.u-without-image {
+                .card {
+                    &__container {
+                        @include calc(width, '100% - 30px');
+                        margin-left: 30px;
+                        padding: 0 20px;
+                    }
+
+                    &__info {
+                        margin: 15px 0;
+                        height: inherit;
+                    }
+                }
+            }
+        }
+
+        &.u-video {
+            .card--media .video-icon {
+                @include size(40px);
+            }
+        }
+
+        &.u-without-image {
+            .card {
+                &__container {
+                    width: 100%;
+                    padding: 0 20px;
+                    margin-left: 0;
+                }
+
+                &__info {
+                    margin: 15px 0;
+                    height: inherit;
+                }
+            }
+        }
+
+    }
+}
+
+.card-2 {
+    @media #{$mobile} {
+        @include card-2-base();
+    }
+}
+
+@mixin card-2-sm-base() {
+
+    @include card-2-base();
+
+    .c-cards-view {
+        &--media {
+            width: 254px;
+            height: 167px;
+        }
+
+        &__container {
+            @include calc(width, '100% - 280px');
+            margin-left: 20px;
+        }
+
+        &__info {
+            @include calc(height, '100% - 45px');
+        }
+    }
+
+    &.u-social {
+        .social-icon {
+            @include size(50px);
+
+            &:before {
+                @include font-size(22);
+                line-height: 52px;
+            }
+        }
+
+        &.u-without-image {
+            .card {
+                &__container {
+                    @include calc(width, '100% - 50px');
+                    margin-left: 50px;
+                }
+            }
+        }
+    }
+
+    &.u-video {
+        .card--media .video-icon {
+            @include size(50px);
+        }
+    }
+}
+
+
+.card-2-sm {
+    @media #{$tablet} {
+        @include card-2-sm-base();
+    }
+}
+
+.card-2-md {
+	@media #{$desktop-up} {
+        @include card-2-sm-base();
+    }
+}

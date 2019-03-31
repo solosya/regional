@@ -212,20 +212,20 @@ $('document').ready(function() {
         $('body').removeClass('noscroll');
     });
 
-    $('.js-card-heading').ellipsis({
-        responsive: true,
-        lines: 2
-    });
+    // $('.js-card-heading').ellipsis({
+    //     responsive: true,
+    //     lines: 2
+    // });
 
-    $('.js-card-description, .u-without-image .js-card-heading').ellipsis({
-        responsive: true,
-        lines: 3
-    });
+    // $('.js-card-description, .u-without-image .js-card-heading').ellipsis({
+    //     responsive: true,
+    //     lines: 3
+    // });
 
-    $('.u-without-image .js-card-description').ellipsis({
-        responsive: true,
-        lines: 4
-    });
+    // $('.u-without-image .js-card-description').ellipsis({
+    //     responsive: true,
+    //     lines: 4
+    // });
 
     $('.js-searchButton').on('click',function() {
         $('.c-navigation__search').show();
@@ -243,7 +243,7 @@ $('document').ready(function() {
         }
     });
 
-    $('.js-media').slick();
+    // $('.js-media').slick();
 
 
 

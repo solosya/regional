@@ -4,15 +4,15 @@
 <section class="container" data-template="section-01">
     
     <div class="row">
-        {{this.render('../_single-article.twig', {
-            article: articles[articleCount], 
-            position: (articleCount+1),
-            imageSuppress: suppress[i],
-            imageSize: {width: 740, height: 360},
-            containerClass: "col-12 col-lg-8 u-full"
-        }) | raw}}
-        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-
+        <div class="col-12 col-lg-8">
+            {{this.render('../_single-article.twig', {
+                article: articles[articleCount], 
+                position: (articleCount+1),
+                imageSize: {width: 740, height: 360},
+                containerClass: "card-1 card-1-sm"
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        </div>
 
 
             <div class="col-12 col-lg-4">
@@ -77,35 +77,49 @@
     <div class="row">
         <div class="col-12 col-lg-8">
             <div class="row">
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 740, height: 360},
+                        containerClass: "card-2 card-2-sm card-2-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
-                {{this.render('../_single-article.twig', {
-                    article: articles[articleCount], 
-                    position: (articleCount+1),
-                    imageSuppress: suppress[i],
-                    imageSize: {width: 740, height: 360},
-                    containerClass: "col-12 u-twoThird"
-                }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 740, height: 360},
+                        containerClass: "card-2 card-2-sm card-2-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
-                {{this.render('../_single-article.twig', {
-                    article: articles[articleCount], 
-                    position: (articleCount+1),
-                    imageSuppress: suppress[i],
-                    imageSize: {width: 740, height: 360},
-                    containerClass: "col-12 u-twoThird"
-                }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
-                {{this.render('../_single-article.twig', {
-                    article: articles[articleCount], 
-                    position: (articleCount+1),
-                    imageSuppress: suppress[i],
-                    imageSize: {width: 740, height: 360},
-                    containerClass: "col-12 u-twoThird"
-                }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 740, height: 360},
+                        containerClass: "card-2 card-2-sm card-2-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="u-advertisement-section">
+                <img src="{{networkData.templatePath}}/static/images/adv2.png" alt="image" class="img-fluid" />
+            </div>
+
+            <div class="row c-cards">
+                <div class="col-12">
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 360, height: 270},
+                        containerClass: "card-1 card-2-sm card-3-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
             </div>
         </div>
     </div>
-
 </section>

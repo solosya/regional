@@ -76,7 +76,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=bf6bb671" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=257d3683" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -208,6 +208,11 @@
         networkData: networkData
     }) | raw }}
 
+    <script defer type="text/javascript"> 
+        var effectiveURL = '{{site}}';
+        var effectiveSection = '{{blogData.title | lower}}';
+        var effectiveType = '{{pageTypeClass}}';
+    </script>
 
 
     {{this.registerJs("

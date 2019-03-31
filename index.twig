@@ -3,7 +3,7 @@
 
 {# {% cache 'indexCache_1' 300 %} #}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 {% set networkData = _Network.getNetworkData() %}
 {% set layoutTitle = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
@@ -53,53 +53,6 @@
 
 
 <main id="main" class="site-main" role="main" data-layout="{{layoutTitle}}">
-
-
-
-
-        {# <div class="col-12 col-lg-8 u-full">
-            <a class="c-cards-view c-cards-view-sm c-cards-view-md <?=$subClass?>" href="javascript:;">
-                <figure class="c-cards-view--media" style="background-image: url('http://themehall.com/preview/celebrate/wp-content/uploads/sites/2/2013/03/unicorn-wallpaper.jpg')">
-                    <img src="http://themehall.com/preview/celebrate/wp-content/uploads/sites/2/2013/03/unicorn-wallpaper.jpg"
-                        alt="Image" class="img-fluid" />
-                    <div class="video-icon"></div>
-                </figure>
-                <div class="social-icon"></div>
-                <div class="c-cards-view__container">
-                    <div class="c-cards-view__info">
-                        <div class="c-cards-view__info--category">Community news</div>
-                        <div class="c-cards-view__info--heading js-card-heading">Meiair naeos rorir despak iaol, It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                        <div class="c-cards-view__info--description js-card-description">Spendisse ultrices pharetra id at nullar donec fin suad asoaos It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            beailak</div>
-                        <div class="c-cards-view__additioanl-info">
-                            <div class="c-cards-view__additioanl-info--price">$950,000</div>
-                            <div class="c-cards-view__additioanl-info--features">
-                                <div class="c-cards-view__additioanl-info--features-list">
-                                    <span class="icon fa fa-bed"></span>
-                                    <span class="text">3</span>
-                                </div>
-                                <div class="c-cards-view__additioanl-info--features-list">
-                                    <span class="icon fa fa-bath"></span>
-                                    <span class="text">7</span>
-                                </div>
-                                <div class="c-cards-view__additioanl-info--features-list">
-                                    <span class="icon fa fa-car"></span>
-                                    <span class="text">2</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="c-cards-view__author">
-                        <div class="c-cards-view__author--name">Christopher MacPherson</div>
-                        <div class="c-cards-view__author--time">1hr ago</div>
-                    </div>
-                </div>
-            </a>
-        </div> #}
-
-
-
 
 
 
