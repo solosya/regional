@@ -11,7 +11,7 @@
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
 
-{% set showPaywall              = false %}
+{% set showPaywall = false %}
 
 {% set ArticleContent = article.content %}
 
@@ -56,7 +56,7 @@
 <main id="main" class="o-body-container o-body-container-md" role="main">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8">
+            <div class="col-9 col-lg-8">
 
                 <div class="c-article c-article-sm ">
 
@@ -78,21 +78,27 @@
 
                     <div class="c-article__main">
                         <div class="c-article__head">
-                            <div class="c-article__head--category">
+                            
+                            {% if _User.isAdminUser() %}
+                                    <a href="{{article.editUrl}}" target="_blank" class="c-article__edit-link">Edit article</a>
+                            {% endif %}
+
+
+                            <div class="c-article__category">
                                 {{article.label}}
                             </div>
-                            <div class="c-article__head--title">
+                            <div class="c-article__title">
                                 {{ quotes.smarten(article.title) }}
                             </div>
-                            <div class="c-article__head--posted-on">
+                            <div class="c-article__posted-on">
                                 <span class="c-article--date">{{article.publishedDate}}</span>
                                 <span class="c-article--time">Updated 2 hrs ago</span>
                             </div>
-                            <div class="c-article__head--posted-by">
+                            <div class="c-article__posted-by">
                                 <div class="c-article--avtar" style="background-image: url({{ profileImg }});">
                                     <!--User Image Embded -->
                                 </div>
-                                <div class="c-article--author">
+                                <div class="c-article__author">
                                     <a href=""{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"">{{ article.createdBy['displayName'] }}</a>
                                 </div>
                             </div>
@@ -126,7 +132,7 @@
                 </div>
                 <!-- End Article Page -->
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-9 col-lg-4">
                 <div class="o-body-container--right-layout">
                     <figure>
                         <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?ixlib=rb-1.2.1&w=1000&q=80" class="img-fluid" alt="dummy image">

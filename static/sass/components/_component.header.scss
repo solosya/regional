@@ -63,10 +63,13 @@
 
     &__main-info {
         @include flexbox();
-        @include align-items(flex-end);
+        @include align-items(center);
         @include justify-content(space-between);
         position: relative;
-
+        
+        @include responsive(xs) {
+            @include align-items(flex-end);
+        }
         &--logo {
             width: 162px;
             display: block;
@@ -197,7 +200,7 @@
     &__search {
         position: absolute;
         background: $white;
-        @include calc(width, '100% - 120px');
+        @include calc(width, '100% - 0px');
         height: 40px;
         @include flexbox();
         @include justify-content(flex-end);
@@ -207,15 +210,19 @@
         top: 0;
         display: none;
 
+        @include responsive(xs) {
+            @include calc(width, '100% - 175px');
+        }
+
         &--icon {
             position: absolute;
-            left: 0;
+            left: 10px;
             top: 10px;
             color: #b1b1b1;
             @include font-size(18);
 
             &.icon-close {
-                right: 0;
+                right: 10px;
                 left: auto;
                 cursor: pointer;
 

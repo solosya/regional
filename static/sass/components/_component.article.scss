@@ -139,71 +139,90 @@
     }
 
     &__head {
-        &--category {
-            color: $blue;
-            font-family: $primaryFont;
+
+    }
+
+    &__edit-link {
+        display:block;
+        color: $blue;
+        font-family: $primaryFont;
+        @include font-size(12);
+        line-height: 1.25;
+        font-weight: $weightMedium;
+        @include margin-top(-30);
+        @include margin-bottom(20);
+        @include padding(10);
+        border: 1px solid $blue;
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+        text-align: center;
+        background-color: $blue;
+        color: white;
+    }
+
+    &__category {
+        color: $blue;
+        font-family: $primaryFont;
+        @include font-size(12);
+        line-height: 1.25;
+        font-weight: $weightMedium;
+        @include margin-bottom(6);
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+    }
+
+    &__title {
+        color: $black;
+        font-family: $primaryFont;
+        @include font-size(28);
+        line-height: 1.14;
+        font-weight: $weightBold;
+        @include margin-bottom(20);
+        letter-spacing: normal;
+    }
+
+    &__posted-on {
+        @include margin-bottom(21);
+        @include flexbox();
+
+        span {
+            color: $greyish;
+            font-family: $secondaryFont;
             @include font-size(12);
             line-height: 1.25;
-            font-weight: $weightMedium;
-            @include margin-bottom(6);
-            text-transform: uppercase;
-            letter-spacing: 0.9px;
-        }
-
-        &--title {
-            color: $black;
-            font-family: $primaryFont;
-            @include font-size(28);
-            line-height: 1.14;
-            font-weight: $weightBold;
-            @include margin-bottom(20);
+            font-weight: $weightRegular;
             letter-spacing: normal;
-        }
+            font-style: italic;
 
-        &--posted-on {
-            @include margin-bottom(21);
-            @include flexbox();
+            &+span {
+                &:before {
+                    content: '|';
+                    display: inline-block;
+                    @include margin(0 8);
 
-            span {
-                color: $greyish;
-                font-family: $secondaryFont;
-                @include font-size(12);
-                line-height: 1.25;
-                font-weight: $weightRegular;
-                letter-spacing: normal;
-                font-style: italic;
-
-                &+span {
-                    &:before {
-                        content: '|';
-                        display: inline-block;
-                        @include margin(0 8);
-
-                    }
                 }
             }
         }
-
-        &--posted-by {
-            border-top: 1px solid $offwhite;
-            border-bottom: 1px solid $offwhite;
-            @include padding(11 0);
-            @include flexbox();
-            @include align-items(center);
-            @include margin-bottom(22);
-        }
     }
 
-    &--avtar {
-        width: 30px;
-        height: 30px;
-        @include border-radius(100%);
-        background-position: center center;
-        @include background-size(contain);
-        @include margin-right(13);
+    &__posted-by {
+        border-top: 1px solid $offwhite;
+        border-bottom: 1px solid $offwhite;
+        @include padding(11 0);
+        @include flexbox();
+        @include align-items(center);
+        @include margin-bottom(22);
     }
+    // &__avtar {
+    //     width: 30px;
+    //     height: 30px;
+    //     @include border-radius(100%);
+    //     background-position: center center;
+    //     @include background-size(contain);
+    //     @include margin-right(13);
+    // }
 
-    &--author {
+    &__author {
         color: $greyish;
         font-family: $primaryFont;
         @include font-size(13);

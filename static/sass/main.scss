@@ -8,6 +8,7 @@
 @import "_settings.variables";
 
 
+
 @import "tools.functions";
 @import "tools.mixins";
 
@@ -50,6 +51,14 @@
 @import 'component.search';
 @import 'component.section';
 @import 'component.subscribe'; 
+@import 'component.weather'; 
+
+// old
+@import "component.modal-login-form";
+@import "component.modal-password-reset-form";
+@import "component.dialog";
+@import "component.signin-modal";
+@import "component.spinner-modal";
 
 
 

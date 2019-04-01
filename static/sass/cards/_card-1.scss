@@ -12,6 +12,7 @@
         }
 
         &__container {
+
             margin-top: -25px;
             margin-left: 10px;
             @include calc(width, '100% - 20px');
@@ -19,6 +20,8 @@
             height: inherit;
             padding: 20px 20px 0 20px;
             z-index: 16;
+            // background:pink;
+
         }
 
         &.u-social {

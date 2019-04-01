@@ -1,68 +1,81 @@
 (function ($) {
 
     $(document).ready(function() {
-        var dropdown = function(date) {
-            return '<div class="weather-date">' + 
-                        '<h1>Weather</h1>' + 
-                        '<p>' + date + '</p>' + 
-                    '</div>' + 
-                    '<div id="weather-panels"></div>';
-        }
 
-        var weatherPanel = function(data) {
-            var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
+        var mainWeather = 
+            '<div class="c-header__weather-info--date">{{date}}</div> \
+            <div class="weather-panel"> \
+                <div class="weather-panel__icon">{{{icon}}}</div> \
+                <p class="weather-panel__location">{{location}}</p> \
+                <div class="weather-panel__temperature">{{temperature}}&#176; </div> \
+                <div class="weather-panel__description">{{description}}</div> \
+                <div class="weather-panel__pulldown-icon"> \
+                    <img class="j-show-weather-forcast" src="' + _appJsConfig.templatePath + '/static/icons/arrow.svg"> \
+                </div> \
+            </div> \
+            \
+            <div class="weather-dropdown hidden j-weather-panel-dropdown"> \
+                <div class="weather-panel__wind">{{wind_speed}} km/h | {{range}}</div> \
+            </div>';
 
-            var icon = weatherIcons(data.icon);
+        var forecast = 
+            '<div class="weather-panel"> \
+                <div class="weather-panel__day">{{{date}}}</div> \
+                <div class="weather-panel__icon">{{{icon}}}</div> \
+                <div class="weather-panel__temperature">{{temperature}}&#176; </div> \
+                <div class="weather-panel__description">{{description}}</div> \
+            </div>';
 
-            return '<div class="panel">' +
-                        '<div style="width: 180px;">' +
-                            '<p class="date">' + data.date + '</p>' + 
-                            '<p class="location">'+data.location.split('/')[1]+'</p>' + 
-                            '<div class="show-weather">' +
-                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            '</div>' +
-                        '</div>' + 
-                        '<div style="width: 48px;">' +
-                            '<div class="icon">' + icon + '</div>' + 
-                        '</div>' + 
-                        '<div style="width: 120px;">' +
-                            '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + data.description + '</div>' + 
-                            '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
-                        '</div>' + 
-                    '</div>';
-            }
+// var dropdown = function(date) {
+        //     return '<div class="weather-date">' + 
+        //                 '<h1>Weather</h1>' + 
+        //                 '<p>' + date + '</p>' + 
+        //             '</div>' + 
+        //             '<div id="weather-panels"></div>';
+        // }
 
-        var weatherPanel = function(location, showArrow) {
+
+
+        var weatherPanel = function(location, template, forecast) {
             return function(data) {
                 var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
 
                 var icon = weatherIcons(data.icon);
-
                 var arrow = '';
                 var description = data.description;
+                date = data.date;
 
-                if (showArrow) {
-                    arrow = '<div class="show-weather">' +
-                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            '</div>';
-                } else {
+                if (forecast ) {
                     // if we're not showing the arrow, this must be a future forecast
                     description = weatherStatus(data.icon);
+                    date = data.date.split(',')[0];
                 };
 
-                return '<div class="panel">' +
-                            '<div style="width: 180px;">' +
-                                '<p class="date">' + data.date + '</p>' + 
-                                '<p class="location">' + location + '</p>' + arrow +
-                            '</div>' + 
-                            '<div style="width: 48px;">' +
-                                '<div class="icon">' + icon + '</div>' + 
-                            '</div>' + 
-                            '<div style="width: 120px;">' +
-                                '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + description + '</div>' + 
-                                '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
-                            '</div>' + 
-                        '</div>';
+                var weatherTmp = Handlebars.compile(template);
+                
+                var params = {
+                    "date" : date,
+                    "icon" : icon,
+                    "arrow" : arrow,
+                    "range" : range,
+                    "location" : location,
+                    "wind_speed" : Math.round(data.wind_speed),
+                    "description" : description,
+                    "temperature" : Math.round(data.temperature),
+                };
+
+                return weatherTmp(params);
+                // return '<div class="c-header__weather-info--date">' + data.date + '</div> \
+                //         <div class="weather-panel"> \
+                //             <div class="weather-panel__icon">' + icon + '</div> \
+                //             <p class="weather-panel__location">' + location + '</p> \
+                //             <div class="weather-panel__temperature">' + Math.round(data.temperature) + '&#176; </div> \
+                //             <div class="weather-panel__description">' + description + '</div> \
+                //             ' + arrow + ' \
+                //         \
+                //         <div class="weather-dropdown hidden j-weather-panel-dropdown"> \
+                //             <div class="weather-panel__wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div> \
+                //         </div>';
             }
         }
 
@@ -96,8 +109,8 @@
 
 
         var weatherIcons = function(icon) {
-            switch(icon) {
 
+            switch(icon) {
             case 'clear-day':
                 return '<svg class="svg-fill" width="37" height="37" viewBox="0 0 37 37">' +
                     '<g fill-rule="evenodd">' +
@@ -208,59 +221,28 @@
         }
 
         var siteLocation = window.location.href;
-        //console.log('thesite:',window.location.href);
-        var location = '';
-
-        if (siteLocation.search('riverine') >= 0 ) {
-            location = 'Australia/Echuca';
-        } else if (siteLocation.search('benalla') >= 0 ) {
-            location = 'Australia/Benalla';
-        } else if (siteLocation.search('cobram') >= 0 ) {
-            location = 'Australia/Cobram';
-        } else if (siteLocation.search('seymour') >= 0 ) {
-            location = 'Australia/Seymour';
-        } else if (siteLocation.search('southern') >= 0 ) {
-            location = 'Australia/Finley';
-        } else if (siteLocation.search('tatura') >= 0 ) {
-            location = 'Australia/Tatura';
-        } else if (siteLocation.search('denipt') >= 0 || siteLocation.search('deniliquin') >= 0) {
-            location = 'Australia/Deniliquin';
-        } else if (siteLocation.search('campaspe') >= 0 ) {
-            location = 'Australia/Campaspe';
-        } else if (siteLocation.search('corowa') >= 0 ) {
-            location = 'Australia/Corowa';
-        } else if (siteLocation.search('kyfree') >= 0 || siteLocation.search('kyabram') >= 0 ) {
-            location = 'Australia/Kyabram';
-        } else if (siteLocation.search('mcivor') >= 0 ) {
-            location = 'Australia/Heathcote';
-        } else if (siteLocation.search('yarrawonga') >= 0 ) {
-            location = 'Australia/Yarrawonga';
-        } else {
-            location = 'Australia/Shepparton';
-        }
-
+        var location = 'Australia/Shepparton';
 
         $.ajax({
             url: 'https://weather.pagemasters.com.au/weather?q=' + location,
             dataType: "json",
             type: 'GET',
             success: function(res) {
-                console.log(res);
                 var local = res.data[0];
                 var name = local.location.split('/')[1];
 
-                $('.j-weather-panel').html(weatherPanel(name, true)(local));
-
-                var days = local.daily.slice(1,7).map(weatherPanel(name, false)).join('');
-
+                $('.j-weather-panel').html(weatherPanel(name, mainWeather, false)(local));
+                console.log(local.daily);
+                var days = local.daily.slice(1,7).map(weatherPanel(name, forecast, true));
+                console.log(days);
                 $('.j-weather-panel-dropdown').html(days);
 
-                $('.show-weather').on("click", function () {
-                    $('.show-weather').toggleClass('flip');
+                $('.j-show-weather-forcast').on("click", function () {
+                    $(this).toggleClass('flip');
                     $('.j-weather-panel-dropdown').toggleClass('hidden');
                 });
             }
         })
-    })
+    });
 
 }(jQuery));

@@ -7,6 +7,11 @@
 
 @import "functions";
 @import "variables";
+
+$grid-columns: 9;
+$grid-gutter-width: 40px;
+
+
 @import "mixins";
 @import "print";
 @import "reboot";

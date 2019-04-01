@@ -54,11 +54,11 @@
 @mixin colourselectstroke($class) {
 	@if $class != '' {
 		#{$class} {
-	        stroke: #000;
+	        stroke: $blue;
 	        fill: #fff;
 	    }
 	} @else {
-		stroke: #000;
+		stroke: $blue;
         fill: #fff;	    
 	}
 }
@@ -206,19 +206,9 @@
 	}
 }
 
-@mixin clearfix() {
-  &:before,
-  &:after {
-    content: " "; // 1
-    display: table; // 2
-  }
-  &:after {
-    clear: both;
-  }
-}
 
 
-
+// NEW
 @mixin clearfix() {
 
 	&:before,
@@ -712,96 +702,74 @@ $breakpoints: ('xs': (min-width: 576px),
 
 
 // // Default image for Dropzone
-@mixin image_background_Dropzone {
-    background-image:url("../images/spritemap@2x.png");
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:428px auto;
-}
+// @mixin image_background_Dropzone {
+//     background-image:url("../images/spritemap@2x.png");
+//     background-position:center center;
+//     background-repeat:no-repeat;
+//     background-size:428px auto;
+// }
 
-// // Default image for Dropzone
-@mixin image_background_DropzoneMessage {
-    background-image:url("../images/uploadsprite.svg");
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:428px auto;
-}
-
-
+// // // Default image for Dropzone
+// @mixin image_background_DropzoneMessage {
+//     background-image:url("../images/uploadsprite.svg");
+//     background-position:center center;
+//     background-repeat:no-repeat;
+//     background-size:428px auto;
+// }
 
 
-@mixin border-radius($radius) {
-	-webkit-border-radius: $radius;
-	border-radius: $radius;
-}
 
 
-// /* Padding */
-@mixin padding($padding) {
-  	padding:$padding;
-}
-@mixin padding-top($padding-top) {
-  	padding-top:$padding-top;
-}
-@mixin padding-right($padding-right) {
-  	padding-right:$padding-right;
-}
-@mixin padding-bottom($padding-bottom) {
-  	padding-bottom:$padding-bottom;
-}
-@mixin padding-left($padding-left) {
-  	padding-left:$padding-left;
-}
 
 // /* Transition */
-@mixin transition($transition) {
-	transition: all 0.3s ease-in;
-	-moz-transition: all 0.3s ease-in;
-	-o-transition: all 0.3s ease-in;
-	-webkit-transition: all 0.3s ease-in;
-	-ms-transition: all 0.3s ease-in;
-}
+// @mixin transition($transition) {
+// 	transition: all 0.3s ease-in;
+// 	-moz-transition: all 0.3s ease-in;
+// 	-o-transition: all 0.3s ease-in;
+// 	-webkit-transition: all 0.3s ease-in;
+// 	-ms-transition: all 0.3s ease-in;
+// }
 
 // /* Sizes */
-@mixin size($width, $height: $width) {
-  	width: $width;
-  	height: $height;
-}
+// @mixin size($width, $height: $width) {
+//   	width: $width;
+//   	height: $height;
+// }
 
 
 // // Image Cover Size
-@mixin background-size($background-size) {
-	-webkit-background-size:$background-size; /* Chrome, Safari, Opera */
-	   -moz-background-size:$background-size; /* Mozilla Firefox */
-	    -ms-background-size:$background-size; /* IE 9 */
-		 -o-background-size:$background-size;
-		    background-size:$background-size;
-}
+// @mixin background-size($background-size) {
+// 	-webkit-background-size:$background-size; /* Chrome, Safari, Opera */
+// 	   -moz-background-size:$background-size; /* Mozilla Firefox */
+// 	    -ms-background-size:$background-size; /* IE 9 */
+// 		 -o-background-size:$background-size;
+// 		    background-size:$background-size;
+// }
 
 
 // // Transform
-@mixin transform($transforms) {
-	-webkit-transform:$transforms; /* Chrome, Safari, Opera */
-	   -moz-transform:$transforms; /* Mozilla Firefox */
-	     -o-transform:$transforms;
-	    -ms-transform:$transforms; /* IE 9 */
-            transform:$transforms;
-}
+// @mixin transform($transforms) {
+// 	-webkit-transform:$transforms; /* Chrome, Safari, Opera */
+// 	   -moz-transform:$transforms; /* Mozilla Firefox */
+// 	     -o-transform:$transforms;
+// 	    -ms-transform:$transforms; /* IE 9 */
+//             transform:$transforms;
+// }
 // // display:flex | inline-flex
 // //
 // // http://w3.org/tr/css3-flexbox/#flex-containers
 // //
 // // (Placeholder selectors for each type, for those who rather @extend)
 
-@mixin flexbox {
-	display:-webkit-box;
-	display:-webkit-flex;
-	display:-moz-flex;
-	display:-ms-flexbox;
-	display:flex;
-}
+// @mixin flexbox {
+// 	display:-webkit-box;
+// 	display:-webkit-flex;
+// 	display:-moz-flex;
+// 	display:-ms-flexbox;
+// 	display:flex;
+// }
 
-%flexbox { @include flexbox; }
+// %flexbox { @include flexbox; }
 
 
 
@@ -816,25 +784,25 @@ $breakpoints: ('xs': (min-width: 576px),
 // //
 // // http://w3.org/tr/css3-flexbox/#flex-direction-property
 
-@mixin flex-direction2($value:row) {
-	@if $value == row-reverse {
-		-webkit-box-direction:reverse;
-		-webkit-box-orient:horizontal;
-	} @else if $value == column {
-		-webkit-box-direction:normal;
-		-webkit-box-orient:vertical;
-	} @else if $value == column-reverse {
-		-webkit-box-direction:reverse;
-		-webkit-box-orient:vertical;
-	} @else {
-		-webkit-box-direction:normal;
-		-webkit-box-orient:horizontal;
-	}
-	-webkit-flex-direction:$value;
-	-moz-flex-direction:$value;
-	-ms-flex-direction:$value;
-	flex-direction:$value;
-}
+// @mixin flex-direction2($value:row) {
+// 	@if $value == row-reverse {
+// 		-webkit-box-direction:reverse;
+// 		-webkit-box-orient:horizontal;
+// 	} @else if $value == column {
+// 		-webkit-box-direction:normal;
+// 		-webkit-box-orient:vertical;
+// 	} @else if $value == column-reverse {
+// 		-webkit-box-direction:reverse;
+// 		-webkit-box-orient:vertical;
+// 	} @else {
+// 		-webkit-box-direction:normal;
+// 		-webkit-box-orient:horizontal;
+// 	}
+// 	-webkit-flex-direction:$value;
+// 	-moz-flex-direction:$value;
+// 	-ms-flex-direction:$value;
+// 	flex-direction:$value;
+// }
 // 	// Shorter version:
 // 	@mixin flex-dir($args...) { @include flex-direction($args...); }
 
@@ -1050,21 +1018,21 @@ $breakpoints: ('xs': (min-width: 576px),
 // //
 // // http://w3.org/tr/css3-flexbox/#align-items-property
 
-@mixin align-items($value:stretch) {
-	@if $value == flex-start {
-		-webkit-box-align:start;
-		-ms-flex-align:start;
-	} @else if $value == flex-end {
-		-webkit-box-align:end;
-		-ms-flex-align:end;
-	} @else {
-		-webkit-box-align:$value;
-		-ms-flex-align:$value;
-	}
-	-webkit-align-items:$value;
-	-moz-align-items:$value;
-	align-items:$value;
-}
+// @mixin align-items($value:stretch) {
+// 	@if $value == flex-start {
+// 		-webkit-box-align:start;
+// 		-ms-flex-align:start;
+// 	} @else if $value == flex-end {
+// 		-webkit-box-align:end;
+// 		-ms-flex-align:end;
+// 	} @else {
+// 		-webkit-box-align:$value;
+// 		-ms-flex-align:$value;
+// 	}
+// 	-webkit-align-items:$value;
+// 	-moz-align-items:$value;
+// 	align-items:$value;
+// }
 
 // //----------------------------------
 
@@ -1073,19 +1041,19 @@ $breakpoints: ('xs': (min-width: 576px),
 // // Values:auto | flex-start | flex-end | center | baseline | stretch
 // // Default:auto
 
-@mixin align-self($value:auto) {
-	// No Webkit Box Fallback.
-	-webkit-align-self:$value;
-	-moz-align-self:$value;
-	@if $value == flex-start {
-		-ms-flex-item-align:start;
-	} @else if $value == flex-end {
-		-ms-flex-item-align:end;
-	} @else {
-		-ms-flex-item-align:$value;
-	}
-	align-self:$value;
-}
+// @mixin align-self($value:auto) {
+// 	// No Webkit Box Fallback.
+// 	-webkit-align-self:$value;
+// 	-moz-align-self:$value;
+// 	@if $value == flex-start {
+// 		-ms-flex-item-align:start;
+// 	} @else if $value == flex-end {
+// 		-ms-flex-item-align:end;
+// 	} @else {
+// 		-ms-flex-item-align:$value;
+// 	}
+// 	align-self:$value;
+// }
 
 // //----------------------------------------------------------------------
 
@@ -1101,16 +1069,16 @@ $breakpoints: ('xs': (min-width: 576px),
 // //
 // // http://w3.org/tr/css3-flexbox/#align-content-property
 
-@mixin align-content($value:stretch) {
-	// No Webkit Box Fallback.
-	-webkit-align-content:$value;
-	-moz-align-content:$value;
-	@if $value == flex-start {
-		-ms-flex-line-pack:start;
-	} @else if $value == flex-end {
-		-ms-flex-line-pack:end;
-	} @else {
-		-ms-flex-line-pack:$value;
-	}
-	align-content:$value;
-}
+// @mixin align-content($value:stretch) {
+// 	// No Webkit Box Fallback.
+// 	-webkit-align-content:$value;
+// 	-moz-align-content:$value;
+// 	@if $value == flex-start {
+// 		-ms-flex-line-pack:start;
+// 	} @else if $value == flex-end {
+// 		-ms-flex-line-pack:end;
+// 	} @else {
+// 		-ms-flex-line-pack:$value;
+// 	}
+// 	align-content:$value;
+// }

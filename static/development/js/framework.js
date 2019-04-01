@@ -1,11 +1,17 @@
 (function ($) {
-    if (typeof window.Acme === 'undefined') {window.Acme = {};}
-
+    window.Acme       = {};
     Acme.View         = {};
     Acme.Model        = {};
     Acme.Collection   = {};
     Acme.Controller   = {};
     Acme.State        = {};
+    Acme.SigninView   = {};
+    Acme.SigninView   = {};
+    Acme.UserProfileController = function(){};
+    
+    if (window.location.port !== '80' && !_appJsConfig.baseHttpPath.split(':')[2] ) {
+        _appJsConfig.baseHttpPath += ':' + window.location.port;
+    }
 
     $('html').on('click', function(e) {
         $('.Acme-pulldown ul').hide();
@@ -27,16 +33,17 @@
             queryParams = (typeof queryParams !== 'undefined') ? queryParams : {};
             
             var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
-            console.log(url);
+
             return $.ajax({
                 url: url,
                 data: queryParams,
                 dataType: datatype || "json",
                 type: type
             }).fail(function(r) {
-                console.log(r);
+                // console.log(r);
                 if (r.status == 501 || r.status == 404) console.log(r.responseText);
                 if (r.responseJSON) console.log(r.responseJSON);
+                console.log(r);
                 console.log(r.responseText);
             });
         },
@@ -55,6 +62,7 @@
     Acme.listen = function() {};
     Acme.listen.prototype.listener = function(topic, data)
     {
+        // console.log(listner);
         var keys = Object.keys(data);
         for (var i = 0; i<keys.length; i++) {
             for (var listener in this.listeners) {
@@ -115,19 +123,21 @@
     Acme._View = function() {};
         Acme._View.prototype = new Acme.listen();
         Acme._View.prototype.updateData = function(data) {
-
-            var key = Object.keys(data)[0];
-            var keySplit = key.split('.');
-            var scope = this.data;
-
-            for(var i=0; i<keySplit.length; i++) {
-                if (!scope[keySplit[i]]) {
-                    scope[keySplit[i]] = {};
+            var keys = Object.keys(data);
+            for (var j=0; j<keys.length; j++) {
+                var key = keys[j];
+                var keySplit = key.split('.');
+                var scope = this.data;
+    
+                for(var i=0; i<keySplit.length; i++) {
+                    if (!scope[keySplit[i]]) {
+                        scope[keySplit[i]] = {};
+                    }
+                    if(i == keySplit.length -1 ) {
+                        scope[keySplit[i]] = data[key];
+                    }
+                    scope = scope[keySplit[i]];
                 }
-                if(i == keySplit.length -1 ) {
-                    scope[keySplit[i]] = data[key];
-                }
-                scope = scope[keySplit[i]];
             }
         }
 
@@ -268,7 +278,6 @@
                     self.data = {};
                     var data =  {};
                     data[name] = null;
-                    // console.log(data);
                     Acme.PubSub.publish('update_state', data);
                 }
             });
@@ -317,8 +326,6 @@
 
                     var caller = scope[scopeSplit[scopeSplit.length - 1]];
                     var func   = subscribers[i].func;
-                    // console.log(topic, data);
-                    // console.log(caller, func);
                     if (caller) {
                         caller[func]( topic, data );
                     }
@@ -404,9 +411,10 @@
 
     Acme.listMenu = function(config)
     {
-        this.defaultTemp      = Handlebars.compile(window.templates.pulldown);
+        this.defaultTemp      = Handlebars.compile(Acme.templates.pulldown);
         this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
         this.divider          = "<hr>";
+        this.callback         = config.callback      || null,
         this.menuParent       = config.parent        || {};
         this.class            = config.class         || "";
         this.template         = config.template      || this.defaultTemp;
@@ -471,7 +479,7 @@
                 }
                 html += itemTemp({
                     'label'   :  label,
-                    'value'   :  value
+                    'value'   :  value || ''
                 });
             }
             return html;
@@ -490,13 +498,17 @@
                 var data = {};
                 data[self.key || self.name] = value;
 
-                Acme.PubSub.publish('update_state', data);
+                if (self.callback) {
+                    self.callback(data);
+                } else {
+                    Acme.PubSub.publish('update_state', data);
+                }
                 
                 if (clear) {
                     self.reset();
                 } else {
                     self.defaultItem.text(elem.text())
-                                    .addClass('Acme-pulldown__selected-item--is-active');
+                        .addClass('Acme-pulldown__selected-item--is-active');
                 }
 
                 $(self.listContainer).hide(100);
@@ -510,8 +522,6 @@
         };
         Acme.listMenu.prototype.reset = function()
         {
-
-            // var menuid = $('#' + this.name + ' > p');
             this.defaultItem.text(this.defaultSelection.label)
                   .removeClass('Acme-pulldown__selected-item--is-active');
             return this;
@@ -542,8 +552,8 @@
 
 
     Acme.modal = function(template, name, layouts, data) {
-        this.parentCont = name || null;
         this.template = template || null;
+        this.parentCont = name   || null;
         this.layouts = layouts   || null;
         this.data = data         || {};
         this.dfd = $.Deferred();
@@ -551,26 +561,27 @@
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
+
             if (title) {
                 this.data['title'] = title;
             }
             this.data['name'] = this.parentCont;
-            var tmp = Handlebars.compile(window.templates[this.template]);
+            var tmp = Handlebars.compile(Acme.templates[this.template]);
             var tmp = tmp(this.data);
-            $('body').addClass('active').append(tmp);
+
+        
+            $('body').addClass('acme-modal-active').append(tmp);
             if (layout) {
                 this.renderLayout(layout, data);
             }
             this.events();
+            this.rendered(); // lifecycle hook that can be overriden
             return this.dfd.promise();
         };
         Acme.modal.prototype.renderLayout = function(layout, data) {
             var data = data || {};
-            console.log(data);
-            var tmp = Handlebars.compile(window.templates[this.layouts[layout]]);
+            var tmp = Handlebars.compile(Acme.templates[this.layouts[layout]]);
             var layout = tmp(data);
-            // var layout = window.templates[this.layouts[layout]];
-
             $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
         };
         Acme.modal.prototype.events = function() 
@@ -581,13 +592,18 @@
             });
 
         };
+        Acme.modal.prototype.rendered = function() {
+            return true;
+        };
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
 
-            if (!$elem.is('input')) {
+            if ( !$elem.is('input') && !$elem.is('a') && !$elem.parent().is('a') ) {
                 e.preventDefault();
             }
-
+            if ($elem.data('behaviour') == 'close') {
+                this.closeWindow();
+            }
             if ( $elem.is('button') ) {
                 if ($elem.text().toLowerCase() === "cancel" || $elem.data('role') == 'cancel') {
                     this.dfd.fail();
@@ -596,37 +612,12 @@
                 } else if ($elem.text().toLowerCase() === "okay" || $elem.data('role') == 'okay') {
                     this.dfd.resolve();
                     this.closeWindow();
-
-
-                    // State can be provided by client external to 'show' call
-                    // if (data === undefined && that.state) {
-                    //     data = that.state;
-                    // // If data is also provided we merge the two
-                    // } else if (that.state) {
-                    //     var keys = Object.keys(that.state)
-                    //     for (var k=0; k<keys.length;k++) {
-                    //         data[keys[k]] = that.state[keys[k]];
-                    //     }
-                    // }
-
-                    // if (self != undefined) {
-                    //     if (data != undefined) {
-                    //         var result = callback.call(self, data);
-                    //         this.dfd.resolve(result);
-                    //     } else {
-                    //         var result = callback.call(self);
-                    //         this.dfd.resolve(result);
-                    //     }
-                    // } else {
-                    //     var result = callback();
-                    //     this.dfd.resolve(result);
-                    // }
                 }
             }
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
-            $('body').removeClass('active');
+            $('body').removeClass('acme-modal-active');
             $('#'+this.parentCont).remove();
         };
     
@@ -691,7 +682,7 @@
             $('#dialog').closest('#wrapper').remove();
         }
     };
-    
+
 }(jQuery));
 
 

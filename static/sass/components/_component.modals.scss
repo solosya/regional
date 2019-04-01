@@ -20,7 +20,7 @@
     .modal-content {
         border: 0;
         @include box-shadow(0px 0px 51px 0px rgba(0, 0, 0, 0.22));
-        @include padding(25); 
+        @include padding(15); 
         max-width: auto !important;
         min-width: auto !important; 
     }
@@ -100,9 +100,14 @@
     .modal-content {
         border: 0;
         @include box-shadow(0px 0px 51px 0px rgba(0, 0, 0, 0.22));
-        @include padding(25);
-        max-width: 527px !important; 
-        min-width: 527px !important;
+        @include padding(15);
+        max-width: auto !important; 
+        min-width: auto !important;
+        
+        @include responsive(md) {
+            max-width: 527px !important;
+            min-width: 527px !important;
+        }    
     }
     .o-modal__container-body {
         padding: 0px !important;
@@ -125,4 +130,23 @@
 
     }
 }
+
+@media screen and (max-device-height: 699px) {
+    .o-modal {
+        &-social {
+            .modal {
+                &.show {
+                    @include align-items(flex-start!important);
+                }
+            }
+            .social--modal {
+                .modal-content {
+                    top:15px;
+                }
+            }
+        }
+    }
+}
+
+
 /* End article style */

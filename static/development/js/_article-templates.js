@@ -2,7 +2,7 @@
  * Handlebar Article templates for listing
  */
 
-window.templates = {};
+Acme.templates = {};
 
 Handlebars.registerHelper('fixPrice', function(text) {
     if (!text) return "";
@@ -50,7 +50,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
 
 
-Acme.swappingHelper = 
+Acme.templates.swappingHelper = 
 '<div class="SwappingHelper" style="display:none"> \
     <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;"> \
         <img class="article-image" src="" style="width:97px; height: 97px; float: left;" /> \
@@ -58,13 +58,6 @@ Acme.swappingHelper =
     </div> \
 </div>';
 
-var screenArticles_1 = 
-'<div class="row half-height top-row">\
-    {¡{content:1-2}¡}\
-</div>\
-<div class="row half-height bottom-row">\
-    {¡{content:3-5}¡}\
-</div>';
 
 
 var cardTemplateTop = 
@@ -117,7 +110,7 @@ var cardTemplateBottom =
 
 
 
-Acme.systemCardTemplate = 
+Acme.templates.systemCardTemplate = 
     cardTemplateTop + 
         '{{#if hasMedia}}\
             <figure>\
@@ -142,79 +135,45 @@ Acme.systemCardTemplate =
 
 
 
-Acme.property_card = 
+Acme.templates.property_card = 
     cardTemplateTop +  
-        '{{#if hasMedia}} \
-            <figure class="{{figureClass}}"> \
-                <picture> \
-                    <source media="(max-width: 620px)" srcset="{{imageUrl}}"> \
-                    <img class="img-responsive" src="{{imageUrl}}" data-original="{{imageUrl}}"> \
-                </picture> \
-            </figure> \
-        {{/if}} \
-        \
-        <div class="content"> \
-            <p class="property__attribute property__attribute--contract">{{ additionalInfo.listing_type }}</p> \
-            <h1 class="price">${{ fixPrice additionalInfo.pricerange }}</h1>\
-            <h2 class="j-truncate">{{ params.articleTitle }}</h2> \
-            \
-            <ul class="property__spaces"> \
-                {{#if additionalInfo.bedroom_count }} \
-                    <li class="property__spaces-item"> \
-                        <img src="'+_appJsConfig.templatePath +'/static/icons/property-bed.svg" alt="bedroom count"> \
-                        <span class="property__spaces-count property__spaces-count--bedroom">{{additionalInfo.bedroom_count}}</span> \
-                    </li> \
-                {{/if}} \
-                {{#if additionalInfo.bathroom_count }} \
-                    <li class="property__spaces-item"> \
-                        <img src="'+_appJsConfig.templatePath +'/static/icons/property-bath.svg" alt="bathroom count"> \
-                        <span class="property__spaces-count property__spaces-count--bathroom">{{additionalInfo.bathroom_count}}</span> \
-                    </li> \
-                {{/if}} \
-                {{#if additionalInfo.car_count }} \
-                    <li class="property__spaces-item"> \
-                        <img src="'+_appJsConfig.templatePath +'/static/icons/property-car.svg" alt="car count"> \
-                        <span class="property__spaces-count property__spaces-count--car">{{additionalInfo.car_count}}</span> \
-                    </li> \
-                {{/if}} \
-            </ul> \
-            \
-            <div class="cat-time"> \
-                <time datetime="{{params.publishDate}}">{{params.publishDate}}</time> \
-            </div> \
-        </div>' +
+
     cardTemplateBottom;
 
 
 
 
 
-window.templates.ads_infinite = 
+Acme.templates.ads_infinite = 
     "<div class='advert-desktop advert-tablet col-sm-9 hidden-xs u-margin-top-30' data-adsize='banner' style='padding:0;'></div>\
     <div class='col-xs-9 visible-xs-block' style='padding:0;width:300px;height:250px;'><div class='advert-mobile' data-adsize='mrec'></div></div>\
     <hr class='divide18 col-xs-9 visible-xs-block'>";
 
 
 
-window.templates.modal = 
-'<div id="signin" class="flex_col"> \
-    <div id="dialog"> \
-        <div> \
-            <div class="head"> \
-                <h2>{{title}}</h2> \
-                <a class="close" href="#"></a> \
+Acme.templates.modal = 
+// style="scrolling == unusable position:fixed element might be fixing login for ios safari
+// also margin-top:10px
+'<div id="{{name}}" class="flex_col {{name}}"> \
+    <div id="dialog" class="{{name}}__window"> \
+        <div class="{{name}}__container centerContent" style="scrolling == unusable position:fixed element"> \
+            <div class="{{name}}__header"> \
+                <h2 class="{{name}}__title">{{title}}</h2> \
+                <img class="popupVideo__headerlogo" src="{{path}}/static/images/nr-logo.svg" alt="logo"> \
+                <a class="{{name}}__close" href="#" data-behaviour="close"></a> \
             </div> \
-            <div id="dialogContent"></div> \
+            <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
         </div> \
     </div> \
 </div>';
-
-window.templates.carousel_item = 
+    
+    
+Acme.templates.carousel_item = 
 '<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
     <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
 </div>';
 
-window.templates.listingDeleteTmpl =  
+Acme.templates.listingDeleteTmpl =  
     '<p>{{msg}}</p> \
     <div> \
         <form> \
@@ -224,7 +183,7 @@ window.templates.listingDeleteTmpl =
     </div>';
     
 
-window.templates.pulldown = 
+Acme.templates.pulldown = 
 '<div id="{{ name }}" class="Window.templates-pulldown {{class}}"> \
     <p class="Acme-pulldown__selected-item"></p> \
     <span class="Acme-pulldown__span"></span> \
@@ -232,7 +191,7 @@ window.templates.pulldown =
 </div>';
 
 
-window.templates.listingSavedTmpl =  '<p>Following approval it will be posted to the events page within 24 hours.</p><div><form><button class="btn _btn dialogButton">Okay</button></form></div>';
+Acme.templates.listingSavedTmpl =  '<p>Following approval it will be posted to the events page within 24 hours.</p><div><form><button class="btn _btn dialogButton">Okay</button></form></div>';
 
 var socialCardTemplate =  
 '<div class="{{cardClass}}"> \
@@ -345,3 +304,90 @@ var socialPostPopupTemplate = function(channel) {
         '</div>'+
      '</div>'   ;   
 }
+
+// Acme.templates.signinFormTmpl = 
+//     // <script> tag possible ios safari login fix
+//     '<form name="loginForm" id="loginForm" class="login-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+//         \
+//         <input id="loginName" class="" type="text" name="username" placeholder="Email address" value="" /> \
+//         <input id="loginPass" class="" type="password" name="password" placeholder="Password" value="" /> \
+//         \
+//         <div class="remember"> \
+//             <p class="layout" data-layout="forgot" class="">Forgot password</p> \
+//         </div> \
+//         \
+//         <div class="message active hide"> \
+//             <div class="login-form__error_text">Invalid Email or Password</div> \
+//         </div> \
+//         \
+//         <button id="signinBtn" type="submit" class="_btn _btn--red signin">SIGN IN</button> \
+//         \
+//         <p class="u-no-margin u-margin-top-15 login-form-faq">Trouble signing in? <a class="login-form-faq__link" href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQ</a></p> \
+//         <div class="reset"> \
+//             <p class="layout" data-layout="forgot" class="">Set my password</p> \
+//         </div> \
+//         \
+//         <script>$("#loginName").on("input", function() {window.scrollBy(0,1);window.scrollBy(0,-1);})</script>\
+//     </form>';
+
+Acme.templates.signinFormTmpl = 
+'<form id="loginForm" class="vertical-form" action="#" method="post" autocomplete="off"> \
+    <div class="o-modal--form"> \
+        <div class="form-group form-group-sm has-success"> \
+            <div class="input--type"> \
+                <input id="email" class="input__text" name="username" placeholder="Email Address" aria-required="true" type="text"> \
+                <span class="fa fa-check input--type--icon"></span> \
+            </div> \
+            <div class="help-block">Please enter your email address</div> \
+        </div> \
+        <div class="form-group form-group-sm"> \
+            <input id="password" class="input__text" name="password" placeholder="Password" aria-required="true" type="text"> \
+            <div class="help-block">Please enter your email Password</div> \
+        </div> \
+        <div class="form-group form-group-sm forgot--password text-right"> \
+            <a href="javascript:;" class="forgot--password--link" data-layout="forgot">Forgot password?</a> \
+        </div> \
+    </div> \
+    <div class="o-modal--action"> \
+        <button type="submit" class="c-button c-button-rounded c-button--blue-bordered">Sign up</button> \
+        <button id="signinBtn" type="submit" class="c-button c-button-rounded c-button--blue j-signin">Log in</button> \
+    </div> \
+    <div class="o-modal--subaction"> \
+        <span>Trouble logging in? <a href="'+_appJsConfig.appHostName +'/faq" target="_blank">Read our FAQs</a></span> \
+    </div> \
+</form>';
+
+
+Acme.templates.forgotFormTmpl = 
+    '<form name="forgotForm" id="forgotForm" class="password-reset-form active" action="javascript:void(0);" method="post" accept-charset="UTF-8" autocomplete="off"> \
+        <input type="hidden" name="_csrf" value="" /> \
+        <p class="password-reset-form__p">Enter your email below and we will send you a link to set your password.</p> \
+        <input id="email" class="password-reset-form__input" type="text" name="email" placehold="Email" value=""> \
+        \
+        <div class="message active hide"> \
+            <div class="password-reset-form__error_text">No user with that email found.</div> \
+        </div> \
+        \
+        <button id="forgotBtn" type="submit" class="_btn _btn--red forgot">SEND EMAIL</button> \
+    </form>';
+
+Acme.templates.forgotFormTmpl = 
+'<div class="o-modal__container-body"> \
+    <form id="forgotForm" class="vertical-form" action="#" method="post" autocomplete="off"> \
+        <div class="o-modal--discription"> \
+            Enter your email below and we will send you a link to set your password. \
+        </div> \
+        <div class="o-modal--form"> \
+            <div class="form-group form-group-sm"> \
+                <div class="input--type"> \
+                    <input id="email" class="input__text" name="email" placeholder="Email Address" aria-required="true" type="text"> \
+                    <span class="fa fa-check input--type--icon"></span> \
+                </div> \
+                <div class="help-block">Please enter your email address</div> \
+            </div> \
+        </div> \
+        <div class="o-modal--action"> \
+            <button type="submit" class="c-button c-button-rounded c-button--blue-bordered j-forgot-email">Send Email</button> \
+        </div> \
+    </form> \
+</div>';

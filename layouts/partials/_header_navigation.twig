@@ -6,22 +6,36 @@
 <header class="c-header">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-9">
                 <div class="c-header__top-bar c-header__top-bar-xs">
                     <a href="javascript:;">Advertise</a>
                     <a href="javascript:;">Contact</a>
                     <a href="javascript:;">FAQs</a>
                 </div>
-                <div class="c-header__weather-info c-header__weather-info-xs">
-                    <div class="c-header__weather-info--date">Wednesday, 09 January 2019</div>
-                    <div class="c-header__weather-info--status">weather</div>
+                <div class="c-header__weather-info c-header__weather-info-xs j-weather-panel">
+                    {# <div class="c-header__weather-info--date">Wednesday, 09 January 2019</div> #}
+
+                    {# <div class="c-header__weather-info--status weather-panel">
+                        <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
+                    </div> #}
                 </div>
                 <div class="c-header__login-info c-header__login-info-xs">
-                    <a href="javascript:;" class="c-button c-button-rounded c-button--blue-bordered">Log in</a>
-                    <a href="javascript:;" class="c-button c-button-rounded c-button--blue">Subscribe</a>
+
+                {% if not _User.isGuest() %}
+                    {% set user = _User.getUser() %}
+
+                    <a href="{{_AppHelper.getLogoffUrl()}}" class="c-button c-button-rounded c-button--blue-bordered">Log out</a>
+                    {# <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right">My Account</a> #}
+                    {# <a href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="header-signin__account u-float-right visible-sm-block">Hi, {{user.firstname}}</a> #}
+                {% else %}
+                    <a id="signinBtn" href="javascript:;" class="c-button c-button-rounded c-button--blue-bordered">Log in</a>
+                    <a href="{{networkData.defaultBlogUrl}}/@pro" class="c-button c-button-rounded c-button--blue">Subscribe</a>
+                {% endif %}
+
+
                 </div>
-                <div class="c-header__main-info">
-                    <a href="javascript:;" class="c-header__main-info--logo">
+                <div class="c-header__main-info c-header__main-info-xs">
+                    <a href="{{networkData.defaultBlogUrl}}" class="c-header__main-info--logo">
                         <img src="{{networkData.templatePath}}/static/images/logo.svg" class="image-fluid" />
                     </a>
                     <div class="c-navigation c-navigation-md">
@@ -72,7 +86,7 @@
                             <div class="c-navigation__icons--search fa fa-search js-searchButton"></div>
                             <div class="c-navigation__icons--navicon fa fa-navicon js-menu"></div>
                         </div>
-                        <div class="c-navigation__search">
+                        <div class="c-navigation__search c-navigation__search-xs">
                             <div class="c-navigation__search--icon fa fa-search"></div>
                             <input type="text" placeholder="Seach"/>
                             <div class="c-navigation__search--icon icon-close fa fa-times js-searchClose"></div>

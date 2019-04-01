@@ -1,3 +1,6 @@
+.fourOnNine {
+	flex: 0 0 25%;
+}
 //Fonts
 $font-family-sans-serif:    "Roboto", Helvetica, Arial, sans-serif;
 $font-family-serif:    		"Noto Serif", "Times New Roman", Times, serif;
@@ -158,7 +161,7 @@ $phone: 				"screen and (min-width : 200px)  and (max-width : 480px)";
 $tabletLandscape: 		"screen and (min-width : 992px)  and (max-width : 1024px)";
 $tablet-up: 			"screen and (min-width : 768px)";
 $tablet: 				"screen and (min-width : 768px)  and (max-width : 991px)";
-// $up-to-desktop: 		"screen and (max-width : 991px)";
+$up-to-desktop: 		"screen and (max-width : 991px)";
 $mobile: 				"screen and (max-width : 767px)";
 
 
@@ -172,3 +175,8 @@ $media-phone: "screen and (max-width : 480px)";
 
 // Standard transition speed
 $transition: 0.4s;
+
+
+// div[class*="col"] {
+// 	background-color:red;
+// }

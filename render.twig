@@ -47,9 +47,9 @@
 
     {% endif %}
 
-        <div class="container {{margin}}">
-            {{this.render(section.template, params) | raw}} 
-        </div>
+        <section class="container {{margin}}">
+            {{this.render(section.template ~ ".twig" , params) | raw}} 
+        </section>
 
     {% if section.background %}
         </div>
