@@ -79,6 +79,7 @@ gulp.task('scripts', function(){
 		// './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 		
         // './static/development/js/plugins/slick.js',
+        './static/development/js/plugins/jquery3.3.1.js',
         './static/development/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
 
         // only used for social pop ups
@@ -88,7 +89,6 @@ gulp.task('scripts', function(){
         './static/development/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
         // './static/development/js/plugins/bootbox.min.js',
-
         // validate used when signing in on login.twig
         './static/development/js/plugins/jquery.validate/jquery.validate.min.js',
 
