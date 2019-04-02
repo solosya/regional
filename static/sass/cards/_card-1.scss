@@ -3,7 +3,7 @@
         @include flex-direction(column, vertical);
         height: inherit;
 
-        &--media {
+        &__media {
             height: 180px;
         }
 
@@ -53,7 +53,7 @@
         }
 
         &.u-video {
-            .c-cards-view--media .video-icon {
+            .c-cards-view__media .video-icon {
                 @include size(40px);
             }
         }
@@ -90,7 +90,7 @@
         @include card-1-base();
 
         .c-cards-view {
-            &--media {
+            &__media {
                 height: 360px;
             }
 
@@ -121,7 +121,7 @@
         }
 
         &.u-video {
-            .c-cards-view--media .video-icon {
+            .c-cards-view__media .video-icon {
                 @include size(70px);
             }
         }

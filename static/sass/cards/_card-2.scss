@@ -3,7 +3,7 @@
     .c-cards-view {
         height: inherit;
 
-        &--media {
+        &__media {
             width: 98px;
             height: 130px;
         }
@@ -47,7 +47,7 @@
         }
 
         &.u-video {
-            .card--media .video-icon {
+            .c-cards-view__media .video-icon {
                 @include size(40px);
             }
         }
@@ -81,7 +81,7 @@
     @include card-2-base();
 
     .c-cards-view {
-        &--media {
+        &__media {
             width: 254px;
             height: 167px;
         }
@@ -117,7 +117,7 @@
     }
 
     &.u-video {
-        .card--media .video-icon {
+        .c-cards-view__media .video-icon {
             @include size(50px);
         }
     }
