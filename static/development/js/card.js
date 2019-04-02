@@ -12,7 +12,7 @@ var Card = function() {
 Card.prototype.renderCard = function(card, cardClass, template, type)
 {
     var self = this;
-    var template = (template) ? Acme[template] : Acme.systemCardTemplate;
+    var template = (template) ? Acme.templates[template] : Acme.templates.systemCardTemplate;
     card['cardClass'] = cardClass;
     if (card.status == "draft") {
         card['articleStatus'] = "draft";

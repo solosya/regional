@@ -29,11 +29,120 @@
 
 
 
-<main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
+<main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     
     <div class="container">
 
 
+        <div class="row">
+            <div class="col-9 col-lg-6">
+                {{this.render('partials/_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: (articleCount+1),
+                    imageSize: {width: 740, height: 360},
+                    containerClass: "card-1 card-1-sm"
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div>
+
+            <div class="col-9 col-lg-3">
+                {{this.render('partials/_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: (articleCount+1),
+                    imageSize: {width: 740, height: 360},
+                    containerClass: "card-3 card-3-sm card-3-md"
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+            {% for i in 0..2 if articles[articleCount] %}
+                <div class="col-9 col-lg-3">
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 360, height: 270},
+                        containerClass: "card-3 card-3-sm card-3-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-9 col-lg-6">
+            {% for i in 0..2 if articles[articleCount] %}
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 360, height: 270},
+                        containerClass: "card-2 card-2-sm card-2-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            {% endfor %}
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+            {% for i in 0..2 if articles[articleCount] %}
+                <div class="col-9 col-lg-3">
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 360, height: 270},
+                        containerClass: "card-3 card-3-sm card-3-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+        <div class="row">
+
+            {% for i in 0..2 if articles[articleCount] %}
+                <div class="col-9 col-lg-3">
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        imageSize: {width: 360, height: 270},
+                        containerClass: "card-3 card-3-sm card-3-md"
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <section class="loadmore__section">
+            <div class="row">
+                {% if articles|length >= limit %}
+                    {{ this.render('partials/ajaxarticles.twig', {
+                        offset          : limit,
+                        limit           : 12,
+                        name            : "section-load",
+                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                        card_class      : "col-sm-3 col-xs-9 card-3 card-3-sm card-3-md row-space40",
+                        container       : "mainAjaxArticlescardClass",
+                        buttonClass     : "infinite",
+                        ads             : "yes",
+                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
+                    }) | raw }}
+                {% endif %}
+               </div>
+        </section>
 
     </div>
 </main><!-- .site-main -->

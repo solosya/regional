@@ -1,4 +1,5 @@
 Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax) {
+    console.log('making new article feed');
     this.cardModel = cardModel;
     this.offset    = offset || 0;
     this.limit     = limit || 10;
@@ -14,7 +15,7 @@ Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, l
 
 Acme.View.articleFeed.prototype.fetch = function()
 {
-
+    console.log('fetching articles');
     var self = this;
     self.elem.html("Please wait...");
 
@@ -77,9 +78,8 @@ Acme.View.articleFeed.prototype.render = function(data)
 
     var html = [];
     if (ads_on == "yes") {
-        html.push( window.templates.ads_infinite );
+        html.push( Acme.templates.ads_infinite );
     }
-
 
     if (data.articles.length === 0 && self.failText) {
         html = ["<p>" + self.failText + "</p>"];
@@ -96,6 +96,7 @@ Acme.View.articleFeed.prototype.render = function(data)
             }
         }
     }
+
     (rendertype === "write")
         ? self.options.container.empty().append( html.join('') )
         : self.options.container.append( html.join('') );
@@ -132,7 +133,7 @@ Acme.View.articleFeed.prototype.events = function()
     });
 
     if (this.infinite && this.offset >= this.limit) {
-
+        console.log('making waypoint');
         self.waypoint = new Waypoint({
             element: self.elem,
             offset: '100%',

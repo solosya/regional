@@ -3,7 +3,7 @@
     $.fn.Ajax_LoadBlogArticles = function(options){
         var requestType = 'post';
         var url = _appJsConfig.baseHttpPath + '/home/load-articles';
-
+        console.log(url);
         var requestData = { 
             offset      : options.offset, 
             limit       : options.limit, 

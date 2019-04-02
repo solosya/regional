@@ -21,20 +21,20 @@
             max-height: 66px;
         }
 
-        &.u-video {
+        &.video {
             .c-cards-view__media .video-icon {
                 @include size(40px);
             }
         }
 
-        &.u-without-image {
+        &.without-image {
             .c-cards-view__container {
                 width: 100%;
                 margin-left: 0px;
                 padding: 0px 20px 0;
             }
 
-            .c-cards-view__info--description {
+            .c-cards-view__description {
                 margin-bottom: 15px;
                 display: block;
                 max-height: 90px;
@@ -42,7 +42,7 @@
             }
         }
 
-        &.u-social {
+        &.social {
             .social-icon {
                 @include size(30px);
 
@@ -52,7 +52,7 @@
                 }
             }
 
-            &.u-without-image {
+            &.without-image {
                 .c-cards-view__container {
                     padding-top: 40px;
                 }
@@ -88,6 +88,7 @@
         @include card-3-base();
 
         .c-cards-view {
+
             &__media {
                 width: 166px;
                 height: 220px;
@@ -99,19 +100,19 @@
             }
         }
 
-        &.u-without-image {
+        &.without-image {
             .c-cards-view__info--heading {
                 max-height: inherit;
             }
         }
 
-        &.u-video {
+        &.video {
             .c-cards-view__media .video-icon {
                 @include size(50px);
             }
         }
 
-        &.u-social {
+        &.social {
             .social-icon {
                 @include size(35px);
 
@@ -121,7 +122,7 @@
                 }
             }
 
-            &.u-without-image {
+            &.without-image {
                 .c-cards-view__container {
                     padding-top: 45px;
                 }
@@ -138,13 +139,14 @@
         @include card-3-base();
 
         .c-cards-view {
-
+ 
             @include flex-direction(column, vertical);
+            min-height: 417px;
 
 
             &__media {
                 width: 100%;
-                height: inherit;
+                height: 260px;
                 background: $white none repeat scroll 0 0 !important;
 
                 img {
@@ -168,13 +170,13 @@
             }
         }
 
-        &.u-video {
+        &.video {
             .c-cards-view__media .video-icon {
                 @include size(70px);
             }
         }
 
-        &.u-social {
+        &.social {
             .social-icon {
                 @include size(50px);
 
@@ -184,7 +186,7 @@
                 }
             }
 
-            &.u-without-image {
+            &.without-image {
                 .c-cards-view__container {
                     padding-top: 60px;
                 }

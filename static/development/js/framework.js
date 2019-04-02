@@ -10,7 +10,15 @@
     Acme.UserProfileController = function(){};
     
     if (window.location.port !== '80' && !_appJsConfig.baseHttpPath.split(':')[2] ) {
-        _appJsConfig.baseHttpPath += ':' + window.location.port;
+        var path = _appJsConfig.baseHttpPath;
+        if (path.indexOf('/@')) {
+            path = path.split('/@');
+            path = path[0] + ":" + window.location.port + "/@" + path[1];
+            console.log(path);
+        } else {
+            path += ':' + window.location.port;
+        }
+        _appJsConfig.baseHttpPath = path;
     }
 
     $('html').on('click', function(e) {
