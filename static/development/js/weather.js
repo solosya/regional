@@ -232,9 +232,9 @@
                 var name = local.location.split('/')[1];
 
                 $('.j-weather-panel').html(weatherPanel(name, mainWeather, false)(local));
-                console.log(local.daily);
+
                 var days = local.daily.slice(1,7).map(weatherPanel(name, forecast, true));
-                console.log(days);
+
                 $('.j-weather-panel-dropdown').html(days);
 
                 $('.j-show-weather-forcast').on("click", function () {

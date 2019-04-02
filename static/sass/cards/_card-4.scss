@@ -1,8 +1,6 @@
-.u-quarter {
-    .card {
+@mixin card-4-base() {
+    .c-cards-view {
         &--media {
-            @extend .u-image-covered;
-
             width: 98px;
             height: 130px;
         }
@@ -88,41 +86,63 @@
             }
         }
 
-        @include responsive(sm) {
-            @include flex-direction(column, vertical);
 
-            .card {
-                &--media {
-                    height: inherit;
-                    width: 100%;
-                    background: $white none repeat scroll 0 0;
+    }
+}
 
-                    img {
-                        display: block;
-                    }
-                }
+.card-4 {
+    @media #{$mobile} {
+        @include card-4-base();
+    }
+}
 
-                &__info--description {
-                    display: block;
-                }
+@mixin card-4-sm-base() {
+    @include card-4-base();
 
-                &__container {
-                    width: 100%;
-                    margin-left: 0;
-                }
+    
+    .c-cards-view {
+        @include flex-direction(column, vertical);
+        &--media {
+            height: inherit;
+            width: 100%;
+            background: $white none repeat scroll 0 0;
 
-                &__info {
-                    @include calc(height, '100% - 34px');
-                }
-            }
-
-            &.u-video {
-                .card--media {
-                    .video-icon {
-                        @include size(50px);
-                    }
-                }
+            img {
+                display: block;
             }
         }
+
+        &__info--description {
+            display: block;
+        }
+
+        &__container {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        &__info {
+            @include calc(height, '100% - 34px');
+        }
+    }
+
+    &.u-video {
+        .card--media {
+            .video-icon {
+                @include size(50px);
+            }
+        }
+    }
+}
+
+.card-4-sm {
+    @media #{$tablet} {
+        @include card-4-sm-base();
+    }
+}
+
+.card-4-md {
+	@media #{$desktop-up} {
+        @include card-4-sm-base();
     }
 }

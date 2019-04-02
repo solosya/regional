@@ -1,12 +1,20 @@
 {% if _AppHelper.getApplicationEnv() == 'PROD'%}
+    
+    {% if _User.isAdminUser() %}
+        {# not yet implemented #}
+        {# <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/auth_scripts.js?ver=1"></script>
+        <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/auth_vendor.js?ver=1"></script> #}
+        <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/scripts.js?ver=2"></script>
+        <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/vendor.js?ver=2"></script>
 
-    <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/scripts.js?ver=2"></script>
-
-
-    <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/auth_scripts.js?ver=1"></script>
-    <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/auth_vendor.js?ver=1"></script>
+    {% else %}
+        <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/vendor.js?ver=2"></script>
+        <script defer type="text/javascript" src="{{networkData.templatePath}}/static/deploy/scripts.js?ver=2"></script>
+    {% endif %}
 
 {% else %}
+
+
 
     {#  ********************************************
                             VENDOR  
@@ -17,6 +25,8 @@
 
     {# <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/plugins/jquery-migrate-1.2.1.min.js?ver=1.2.1"></script> #}
     <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/plugins/jquery.ellipsis/jquery.ellipsis.js"></script>
+    <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/plugins/jquery.dotdotdot.min.js"></script>
+
     <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/plugins/fancybox/jquery.fancybox.js"></script>
     
     {# Bootstrap dropdown require Popper.js (https://popper.js.org) #}

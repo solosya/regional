@@ -87,7 +87,7 @@
         
 
         <a  href                = "{{article.url}}" 
-            class               = "{{swap}} c-cards-view {{hasArticleMediaClass}}" 
+            class               = "{{swap}} {{hasArticleMediaClass}}" 
             data-id             = "{{article.articleId}}" 
             data-guid           = "{{article.guid}}" 
             data-position       = "{{position}}" 
@@ -101,14 +101,13 @@
             {% endif %}
             
             {# Article content including image #}
-            {# <article class="{{lightbox}}"> #}
-
+            <article class="c-cards-view {{lightbox}}">
                 {{ this.render('_article-'~template~'.twig', {
                     article: article,  
                     params:params, 
                     networkData: networkData
                 } ) | raw }}
-            {# </article> #}
+            </article>
 
 
 

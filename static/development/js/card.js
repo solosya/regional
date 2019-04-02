@@ -1,8 +1,10 @@
 var CardController = function() {
+    console.log('making card controller');
     return new Card();
 }
 
 var Card = function() {
+    console.log('running events');
     this.events();
 };
 
@@ -192,6 +194,7 @@ Card.prototype.bindSocialPostPopup = function()
 
 Card.prototype.initDraggable = function()
 {
+    console.log('initing draggable');
     $('.swap').draggable({
         helper: 'clone',
         revert: true,
@@ -328,8 +331,8 @@ Card.prototype.initDroppable = function()
 Card.prototype.events_refresh = function() 
 {
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
-        // this.initDroppable();
-        // this.initDraggable();        
+        this.initDroppable();
+        this.initDraggable();        
         this.bindPinUnpinArticle();
         this.bindDeleteHideArticle();
     }
@@ -338,8 +341,8 @@ Card.prototype.events_refresh = function()
 Card.prototype.events = function() 
 {
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
-        // this.initDroppable();
-        // this.initDraggable();        
+        this.initDroppable();
+        this.initDraggable();        
         this.bindPinUnpinArticle();
         this.bindDeleteHideArticle();
         this.bindSocialUpdatePost();

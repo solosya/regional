@@ -48,7 +48,7 @@
     </div>
     <div class="row c-cards">
 
-        <div class="col fourOnNine">
+        <div class="col">
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 position: (articleCount+1),
@@ -59,7 +59,7 @@
         </div>
 
 
-        <div class="col fourOnNine">
+        <div class="col">
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 position: (articleCount+1),
@@ -69,7 +69,7 @@
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         </div>
 
-        <div class="col fourOnNine">
+        <div class="col">
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 position: (articleCount+1),
@@ -79,7 +79,7 @@
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         </div>
 
-        <div class="col fourOnNine">
+        <div class="col">
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 position: (articleCount+1),

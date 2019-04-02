@@ -69,7 +69,7 @@
     {% set eventImg = _Media.getMediaUrl(event.media[0], imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 
     <a  href="{{event.url}}" 
-        class="{{swap}} card event {{hasMedia}}" 
+        class="{{swap}} c-eventcards-view {{hasMedia}}" 
         data-id="{{event.eventId}}" 
         data-guid="{{event.eventGuid}}" 
         data-position="{{position}}" 
