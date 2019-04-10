@@ -23,6 +23,5 @@
     "gulp-util": "^3.0.8",
     "run-sequence": "^1.2.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -358,9 +358,9 @@
             max-width:230px;
             @include margin-top(10);
             
-            +.c-button {
-                @include margin-left(0);
-            }
+            // +.c-button {
+            //     @include margin-left(0);
+            // }
             &--blue {
                 &-bordered {
                     background-color:transparent;
