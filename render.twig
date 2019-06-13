@@ -18,7 +18,13 @@
 {# else if a page section has articles from a single blog, no assembly required #}
 {% else %}
 
-    {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
+
+    {% if section.blogs is defined and blogFeeds[section.blogs[0]] is defined %}
+        {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
+    {% else %}
+        {% set feedArr = blogFeeds[section.blog].feed.articles %}
+    {% endif %}
+
 
 {% endif %}
 
