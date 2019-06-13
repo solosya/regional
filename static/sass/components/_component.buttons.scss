@@ -38,6 +38,8 @@
         @include border-radius(4px);
     }
 
+    
+
     &--blue {
         background-color: $blue;
         border-color: $blue;
@@ -62,8 +64,13 @@
         }
     }
 
-    +.c-button {
-        margin-left: 10px;
+    // +.c-button {
+    //     margin-left: 10px;
+    // }
+
+    &--center{
+        margin-right: auto;
+        margin-left: auto;
     }
     
     &-disabled {
