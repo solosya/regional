@@ -76,7 +76,21 @@
 
 <meta name="" content="{{premium}}">
 
-<main id="main" class="container" role="main">
+<main id="main" class="container" role="main" itemscope itemtype="http://schema.org/NewsArticle">
+    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{article.url}}"/>
+    <meta itemprop="url" content="{{article.url}}">
+    <meta itemprop="dateModified" content="{{article.updatedAt}}">
+    <meta itemprop="datePublished" content="{{article.publishedDate}}">
+    {% if publisher.logo is not empty %}
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="{{publisher.name}}"/>
+            <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="{{publisher.logo}}"/>
+                <meta itemprop="width" content="{{publisher.width}}"/>
+                <meta itemprop="height" content="{{publisher.height}}"/>
+            </div>
+        </div>
+    {% endif %}
 
 
     <article id="article-content" class="article-main" data-id="{{article.id}}" data-status="{{article.status}}">
@@ -96,7 +110,7 @@
                                     <a href="{{blogInfo.url}}"><p class="category {{site}}" >{{article.label}}</p
                                     ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                                     
-                                    <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>
+                                    <h1 id="article-title" itemprop="headline">{{ quotes.smarten(article.title) }}</h1>
                                     
                                     <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
                                     <div class="article-social article-social__desktop visible-md-block visible-lg-block">
@@ -198,7 +212,7 @@
                             <div class="col-md-9 u-margin-top-40 u-mobile-margin-top-20">
 
 
-                            <div class="article_content {{site}}" id="articleContent">
+                            <div class="article_content {{site}}" id="articleContent" itemprop="articleBody">
                                 {{ content | _resizeImages({'width': 600}) | raw }}
                             </div><!-- .content-->
 
