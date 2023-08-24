@@ -158,6 +158,12 @@
 
                                     <div class="gallery-container relative" data-featured="{{featured}}">
 
+                                        {% if article.media[0]['type'] != 'video' %}
+                                        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" >
+                                            <meta itemprop="url" content="{{ _Media.getMediaUrl(article.media[0], 0, 0, {'crop': 'fill', 'gravity': 'auto'} )}}">
+                                        </div>
+                                    {% endif %}
+                                    
                                         {% if images|length > 0 %}
                                             {% set imageFeature = false %}
                                             {% if featured == 'image' or featured == 'doc' %}
