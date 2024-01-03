@@ -23,7 +23,7 @@
 {% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.format("Y-m-d")}) %}
 
 
 <section class="">
